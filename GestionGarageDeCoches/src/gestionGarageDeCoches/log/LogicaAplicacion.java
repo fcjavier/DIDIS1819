@@ -23,6 +23,7 @@ public class LogicaAplicacion {
     public boolean comprobarDNI(String dni){
         boolean control=true;
         if(dni.length()!=9){control=false;}
+        if(control==true){
         for (int i = 0; i < dni.length() - 1; i++) {
             if (dni.codePointAt(i) >= 48 && dni.codePointAt(i) <= 57) {                
             } else {                
@@ -32,7 +33,8 @@ public class LogicaAplicacion {
         if (dni.codePointAt(dni.length() - 1) >= 65 && dni.codePointAt(dni.length() - 1) <= 90) {            
         } else {
              control = false;
-        }       
+        } 
+        }
         return control;
     }
     
