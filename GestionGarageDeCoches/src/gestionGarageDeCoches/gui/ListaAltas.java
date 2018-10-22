@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package garage.gui;
+package gestionGarageDeCoches.gui;
 
 import garage.dto.Propietario;
 import javax.swing.table.DefaultTableModel;
