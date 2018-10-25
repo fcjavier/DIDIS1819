@@ -20,9 +20,9 @@ public class MainCorredor {
      */
     public static void main(String[] args) {
         
-        int opcion;
-        int contador=0;
-        boolean ingresado=false;
+         int opcion;
+         int contador=0;
+         boolean ingresado=false;
          Corredor corredor=new Corredor();
          List<Corredor>listaCorredores=new ArrayList<Corredor>();        
          LogicaAplicacion la=new LogicaAplicacion();
@@ -37,9 +37,15 @@ public class MainCorredor {
                       corredor.setDorsal(la.asignarDorsal());
                    }
                     break;
-                  case 2:                      
+                  case 2:                   
+                      la.bajaCorredor(la.buscarCorredor(listaCorredores), listaCorredores);
                     break;
                   case 3:
+                      Corredor c=new Corredor();
+                      c=la.buscarCorredor(listaCorredores);
+                      int pos=listaCorredores.indexOf(c);
+                      corredor=la.modificarDatosCorredor(c);
+                      listaCorredores.set(pos, corredor);                
                       break;
                   case 4:
                       break;

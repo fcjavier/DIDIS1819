@@ -18,10 +18,9 @@ public class LogicaAplicacion {
     Scanner sc=new Scanner(System.in);
     Corredor corredor;
     int totalDorsales=0;
+    
     public int  menu(){
-         
-        
-        System.out.println("-------------MENU---------------");
+        System.out.println("\n-------------MENU---------------");
         System.out.println("1. Alta corredor.");
         System.out.println("2. Baja corredor.");
         System.out.println("3. Modificar datos corredor.");
@@ -129,6 +128,26 @@ public class LogicaAplicacion {
         return dorsal;
      }
      
+     public Corredor buscarCorredor(List<Corredor> lista){
+         Corredor corredor=null;
+         sc.nextLine();
+         System.out.println("Introduzca uno de los datos para la busqueda\n (nombre/dni/dorsal): ");
+         String dato=sc.nextLine();
+         for(Corredor c: lista){
+             if(dato.equalsIgnoreCase(c.getNombre()) || dato.equalsIgnoreCase(c.getDni())
+                     || dato.equalsIgnoreCase(c.getDorsal())){
+                  corredor=c;
+             }
+         }
+         return corredor;
+     }
      
+     public Corredor modificarDatosCorredor(Corredor c){      
+         System.out.println(c.toString());
+         System.out.println("Modifique los datos: ");
+         corredor=datosParaCorredor();
+         corredor.setDorsal(c.getDorsal());
+         return corredor;
+     }
      
 }
