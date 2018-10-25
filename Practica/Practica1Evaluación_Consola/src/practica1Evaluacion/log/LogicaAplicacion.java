@@ -42,14 +42,19 @@ public class LogicaAplicacion {
         sc.nextLine();
         System.out.print("Nombre: ");
         String nombre=sc.nextLine();
+        if(nombre==""){nombre=" ";}
         System.out.print("DNI: ");
         String dni=sc.nextLine();
+        if(dni==""){dni=" ";}
         System.out.print("Fecha nacimiento (dd/mm/yyyy): ");
         String fecha=sc.nextLine();
+        if(fecha==""){fecha=" ";}
         System.out.print("Dirección: ");
         String direccion=sc.nextLine();
+        if(direccion==""){direccion=" ";}
         System.out.print("Teléfono: ");
         String telefono=sc.nextLine();
+        if(telefono==""){telefono=" ";}
         sc.nextLine();
         Corredor c=new Corredor(nombre, dni, fecha, direccion, telefono);
         return c;

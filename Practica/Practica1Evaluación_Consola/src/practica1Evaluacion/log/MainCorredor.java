@@ -19,14 +19,14 @@ public class MainCorredor {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        final String FICHERO="corredores.csv";
          int opcion;
          int contador=0;
          boolean ingresado=false;
          Corredor corredor=new Corredor();
          List<Corredor>listaCorredores=new ArrayList<Corredor>();        
          LogicaAplicacion la=new LogicaAplicacion();
-         
+         LogicaDeAlmacenamiento lda=new LogicaDeAlmacenamiento();
           do{
              opcion = la.menu();
               switch(opcion){
@@ -48,8 +48,15 @@ public class MainCorredor {
                       listaCorredores.set(pos, corredor);                
                       break;
                   case 4:
+                      lda.guardarDatosEnCSV(listaCorredores, FICHERO);
                       break;
                   case 5:
+                      listaCorredores=lda.leerFicheroCSV(FICHERO);
+                      if(listaCorredores!=null){
+                          System.out.println("El fichero se ha cargado");
+                      }else{
+                          System.out.println("El fichero está vacío");
+                      }
                       break;
                   case 6:
                       break;
