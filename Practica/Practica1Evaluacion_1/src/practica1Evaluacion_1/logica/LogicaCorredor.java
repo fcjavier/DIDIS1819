@@ -5,6 +5,8 @@
  */
 package practica1Evaluacion_1.logica;
 
+import java.util.ArrayList;
+import java.util.List;
 import practica1Evaluacion_1.modelo.Corredor;
 
 /**
@@ -12,15 +14,12 @@ import practica1Evaluacion_1.modelo.Corredor;
  * @author USER
  */
 public class LogicaCorredor {
-    
- Corredor c =new Corredor();
- 
- /**
-  * Método que agrega un nuevo corredor en el arrayList listaCorredores.
-  * @param corredor 
-  */
- public void agregarCorredor(Corredor corredor){
-     c.getListaCorredores().add(corredor);
- }
- 
+   public static List<Corredor>listaCorredores=new ArrayList<>();
+
+    public static List<Corredor> getListaCorredores() {
+        return listaCorredores;
+    }
+    public void agregarCorredor(Corredor c){
+        listaCorredores.add(c);
+    }
 }

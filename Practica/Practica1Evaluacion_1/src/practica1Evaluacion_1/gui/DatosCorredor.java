@@ -5,7 +5,11 @@
  */
 package practica1Evaluacion_1.gui;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
 import practica1Evaluacion_1.logica.LogicaCorredor;
@@ -16,20 +20,35 @@ import practica1Evaluacion_1.modelo.Corredor;
  * @author USER
  */
 public class DatosCorredor extends javax.swing.JDialog {
-
+    
     LogicaCorredor logCorredor = new LogicaCorredor();
-
+    private SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
     /**
      * Creates new form DatosCorredor
      */
     public DatosCorredor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        jButtonConfirmarCorredor.setEnabled(false);
+
         ValidationGroup group = validationPanelCorredor.getValidationGroup();
         group.add(jTextFieldNombre, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldDireccion, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldTelefono, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldTelefono, StringValidators.REQUIRE_VALID_INTEGER);
+
+        validationPanelCorredor.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent ce) {
+                if (validationPanelCorredor.getProblem() == null) {
+                    jButtonConfirmarCorredor.setEnabled(true);
+
+                } else {
+                    jButtonConfirmarCorredor.setEnabled(false);
+                }
+            }
+        });
     }
 
     /**
@@ -39,11 +58,12 @@ public class DatosCorredor extends javax.swing.JDialog {
     public void crearCorredor() {
         String nombre = jTextFieldNombre.getText();
         String dni = jTextFieldDNI.getText();
-        Date fecha = (Date) jSpinnerFechaNacimiento.getValue();
+        Date f = (Date) jSpinnerFechaNacimiento.getValue();
+        String fecha=sdf.format(f);
         String direccion = jTextFieldDireccion.getText();
         String telefono = jTextFieldTelefono.getText();
-        Corredor corredor = new Corredor(nombre, dni, fecha, direccion, telefono);
-        logCorredor.agregarCorredor(corredor);
+        Corredor c = new Corredor(nombre, dni, fecha, direccion, telefono);
+        logCorredor.agregarCorredor(c);
     }
 
     /**
@@ -190,7 +210,15 @@ public class DatosCorredor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConfirmarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarCorredorActionPerformed
-         
+        crearCorredor();
+        int opcion=JOptionPane.showConfirmDialog(this, "NUEVO CORREDOR", "REGISTRO REALIZADO", JOptionPane.YES_NO_OPTION);
+        if(opcion==JOptionPane.NO_OPTION){this.dispose();}
+        if(opcion==JOptionPane.YES_OPTION){
+            jTextFieldNombre.setText("");
+            jTextFieldDNI.setText("");
+            jTextFieldDireccion.setText("");
+            jTextFieldTelefono.setText("");
+        }
     }//GEN-LAST:event_jButtonConfirmarCorredorActionPerformed
 
 

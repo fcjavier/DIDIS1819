@@ -72,6 +72,11 @@ public class Corredores extends javax.swing.JDialog {
         jLabel5.setText("Listar de corredores");
 
         jButtonListaDeCorredores.setText("LISTAR");
+        jButtonListaDeCorredores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListaDeCorredoresActionPerformed(evt);
+            }
+        });
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Ver un corredor");
@@ -147,6 +152,11 @@ public class Corredores extends javax.swing.JDialog {
          DatosCorredor datosCorredor=new DatosCorredor(pantallaPrincipal, true);
          datosCorredor.setVisible(true);
     }//GEN-LAST:event_jButtonAlataCorredorActionPerformed
+
+    private void jButtonListaDeCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDeCorredoresActionPerformed
+         ListadoDeCorredores listadoDeCorredores=new ListadoDeCorredores(pantallaPrincipal, true);
+         listadoDeCorredores.setVisible(true);
+    }//GEN-LAST:event_jButtonListaDeCorredoresActionPerformed
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

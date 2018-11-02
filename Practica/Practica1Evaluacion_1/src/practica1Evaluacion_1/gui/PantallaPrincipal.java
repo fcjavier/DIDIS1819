@@ -5,6 +5,7 @@
  */
 package practica1Evaluacion_1.gui;
 
+import java.util.Locale;
 import practica1Evaluacion_1.modelo.*;
 
 /**
@@ -129,6 +130,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                Locale.setDefault(new Locale("es", "ES"));
                 new PantallaPrincipal().setVisible(true);
             }
         });

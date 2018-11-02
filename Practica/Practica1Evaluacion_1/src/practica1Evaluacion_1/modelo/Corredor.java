@@ -4,29 +4,26 @@
  * and open the template in the editor.
  */
 package practica1Evaluacion_1.modelo;
- 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  *
  * @author USER
  */
 public class Corredor {
+
     //Atributos
     private String nombre;
     private String dni;
-    private Date fechaNacimiento; 
+    private String fechaNacimiento;
     private String direccion;
     private String telefono;
     private String dorsal;
-    private List<Corredor>listaCorredores=new ArrayList<Corredor>();
+
     //Constructores
     public Corredor() {
     }
 
-    public Corredor(String nombre, String dni, Date fechaNacimiento, String direccion, String telefono) {
+    public Corredor(String nombre, String dni, String fechaNacimiento, String direccion, String telefono) {
         this.nombre = nombre;
         this.dni = dni;
         this.fechaNacimiento = fechaNacimiento;
@@ -51,11 +48,11 @@ public class Corredor {
         this.dni = dni;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -75,10 +72,6 @@ public class Corredor {
         this.telefono = telefono;
     }
 
-    public List<Corredor> getListaCorredores() {
-        return listaCorredores;
-    }
-    
     public String getDorsal() {
         return dorsal;
     }
@@ -86,5 +79,5 @@ public class Corredor {
     public void setDorsal(String dorsal) {
         this.dorsal = dorsal;
     }
- 
+
 }
