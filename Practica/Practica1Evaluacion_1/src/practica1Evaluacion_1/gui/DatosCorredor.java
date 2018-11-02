@@ -20,9 +20,10 @@ import practica1Evaluacion_1.modelo.Corredor;
  * @author USER
  */
 public class DatosCorredor extends javax.swing.JDialog {
-    
+
     LogicaCorredor logCorredor = new LogicaCorredor();
-    private SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
     /**
      * Creates new form DatosCorredor
      */
@@ -59,7 +60,7 @@ public class DatosCorredor extends javax.swing.JDialog {
         String nombre = jTextFieldNombre.getText();
         String dni = jTextFieldDNI.getText();
         Date f = (Date) jSpinnerFechaNacimiento.getValue();
-        String fecha=sdf.format(f);
+        String fecha = sdf.format(f);
         String direccion = jTextFieldDireccion.getText();
         String telefono = jTextFieldTelefono.getText();
         Corredor c = new Corredor(nombre, dni, fecha, direccion, telefono);
@@ -211,9 +212,11 @@ public class DatosCorredor extends javax.swing.JDialog {
 
     private void jButtonConfirmarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarCorredorActionPerformed
         crearCorredor();
-        int opcion=JOptionPane.showConfirmDialog(this, "NUEVO CORREDOR", "REGISTRO REALIZADO", JOptionPane.YES_NO_OPTION);
-        if(opcion==JOptionPane.NO_OPTION){this.dispose();}
-        if(opcion==JOptionPane.YES_OPTION){
+        int opcion = JOptionPane.showConfirmDialog(this, "NUEVO CORREDOR", "REGISTRO REALIZADO", JOptionPane.YES_NO_OPTION);
+        if (opcion == JOptionPane.NO_OPTION) {
+            this.dispose();
+        }
+        if (opcion == JOptionPane.YES_OPTION) {
             jTextFieldNombre.setText("");
             jTextFieldDNI.setText("");
             jTextFieldDireccion.setText("");

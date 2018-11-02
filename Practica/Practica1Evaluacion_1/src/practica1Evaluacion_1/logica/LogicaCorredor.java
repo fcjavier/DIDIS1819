@@ -22,4 +22,16 @@ public class LogicaCorredor {
     public void agregarCorredor(Corredor c){
         listaCorredores.add(c);
     }
+    public Corredor buscarCorredor(String dato){
+        Corredor corredor=new Corredor();
+        for(Corredor c: listaCorredores){
+            if(c.getDni().equalsIgnoreCase(dato)){
+                corredor=c;
+            }
+        }
+        return corredor;
+    }
+    public boolean bajaCorredor(Corredor c){
+         return listaCorredores.remove(c);
+    }
 }

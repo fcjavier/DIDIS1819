@@ -5,12 +5,17 @@
  */
 package practica1Evaluacion_1.gui;
 
+import javax.swing.JOptionPane;
+import practica1Evaluacion_1.logica.LogicaCorredor;
+import practica1Evaluacion_1.modelo.Corredor;
+
 /**
  *
  * @author USER
  */
 public class Corredores extends javax.swing.JDialog {
-
+    Corredor c=new Corredor();
+    LogicaCorredor lc=new LogicaCorredor();
     PantallaPrincipal pantallaPrincipal;
     /**
      * Creates new form Corredores
@@ -62,6 +67,11 @@ public class Corredores extends javax.swing.JDialog {
         jLabel3.setText("Baja de un corredor");
 
         jButtonBajaCorredor.setText("BAJA");
+        jButtonBajaCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBajaCorredorActionPerformed(evt);
+            }
+        });
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Modificar un  corredor");
@@ -82,6 +92,11 @@ public class Corredores extends javax.swing.JDialog {
         jLabel6.setText("Ver un corredor");
 
         jButtonBuscarCorredor.setText("BUSCAR");
+        jButtonBuscarCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarCorredorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -157,6 +172,32 @@ public class Corredores extends javax.swing.JDialog {
          ListadoDeCorredores listadoDeCorredores=new ListadoDeCorredores(pantallaPrincipal, true);
          listadoDeCorredores.setVisible(true);
     }//GEN-LAST:event_jButtonListaDeCorredoresActionPerformed
+
+    private void jButtonBuscarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarCorredorActionPerformed
+         String dato=JOptionPane.showInputDialog(this, "INTRODUZCA DNI", JOptionPane.QUESTION_MESSAGE);
+         c=lc.buscarCorredor(dato);
+         String cadena="CORREDOR:\n  Nombre: "+c.getNombre()+"\n  DNI: "+c.getDni()+"\n  Fecha Nacimiento: "+
+                 c.getFechaNacimiento()+"\n  Dirección: "+c.getDireccion()+"\n  Teléfono:  "+c.getTelefono();
+         if(c!=null){
+          JOptionPane.showMessageDialog(this, cadena);
+         }
+         
+    }//GEN-LAST:event_jButtonBuscarCorredorActionPerformed
+
+    private void jButtonBajaCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBajaCorredorActionPerformed
+        boolean baja = false; 
+        String dato=JOptionPane.showInputDialog(this, "INTRODUZCA DNI", JOptionPane.QUESTION_MESSAGE);
+          int confirmar=JOptionPane.showConfirmDialog(this, "¿Eliminar dni: "+dato+"?","COMFIRMACIÓN", JOptionPane.YES_NO_OPTION);
+          if(confirmar==JOptionPane.YES_OPTION){
+         c=lc.buscarCorredor(dato);
+          baja=lc.bajaCorredor(c);
+          }
+         if(baja){
+             JOptionPane.showMessageDialog(this, "CORREDOR ELIMINADO");
+         }else{
+             JOptionPane.showMessageDialog(this, "No se ha podido eliminar o no existe","ERROR",JOptionPane.WARNING_MESSAGE);
+         }
+    }//GEN-LAST:event_jButtonBajaCorredorActionPerformed
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
