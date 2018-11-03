@@ -34,4 +34,5 @@ public class LogicaCorredor {
     public boolean bajaCorredor(Corredor c){
          return listaCorredores.remove(c);
     }
+    
 }
