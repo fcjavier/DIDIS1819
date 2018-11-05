@@ -6,8 +6,11 @@
 package practica_segundaIdea.run;
 
 import practica_segundaIdea.corredor_gui.*;
+import practica_segundaIdea.carreras_gui.*;
 import javax.swing.JOptionPane;
+import practica_segundaIdea.dto.Carrera;
 import practica_segundaIdea.dto.Corredor;
+import practica_segundaIdea.logica.LogicaCarrera;
 import practica_segundaIdea.logica.LogicaCorredor;
 
 /**
@@ -17,7 +20,9 @@ import practica_segundaIdea.logica.LogicaCorredor;
 public class PaginaPrincipal extends javax.swing.JFrame {
 
     LogicaCorredor lc = new LogicaCorredor();
+    LogicaCarrera logCarrera = new LogicaCarrera();
     Corredor c = new Corredor();
+    Carrera carrera = new Carrera();
 
     /**
      * Creates new form PaginaPrincipal
@@ -42,10 +47,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jButtonModificarCorredor = new javax.swing.JButton();
         jButtonConsultarCorredor = new javax.swing.JButton();
         jButtonListarCorredores = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jButtonCrearCarrera = new javax.swing.JButton();
+        jButtonAnularCarrera = new javax.swing.JButton();
+        jButtonModificarCarrera = new javax.swing.JButton();
+        jButtonConsultarCarrera = new javax.swing.JButton();
+        jButtonListarCarreras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(0, 102, 153));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel1.setText("GESTION   DE   CORREDORES");
 
         jButtonAltaCorredor.setText("ALTA");
@@ -83,6 +96,44 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel2.setText("GESTION  DE  CARRERAS");
+
+        jButtonCrearCarrera.setText("CREAR");
+        jButtonCrearCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearCarreraActionPerformed(evt);
+            }
+        });
+
+        jButtonAnularCarrera.setText("ANULAR");
+        jButtonAnularCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnularCarreraActionPerformed(evt);
+            }
+        });
+
+        jButtonModificarCarrera.setText("MODIFICAR");
+        jButtonModificarCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarCarreraActionPerformed(evt);
+            }
+        });
+
+        jButtonConsultarCarrera.setText("CONSULTAR");
+        jButtonConsultarCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarCarreraActionPerformed(evt);
+            }
+        });
+
+        jButtonListarCarreras.setText("LISTAR");
+        jButtonListarCarreras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListarCarrerasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -90,19 +141,34 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jButtonAltaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonBajaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonModificarCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonConsultarCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonListarCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(199, 199, 199)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(215, 215, 215)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonCrearCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonAltaCorredor, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonBajaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonModificarCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonConsultarCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonAnularCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonModificarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonConsultarCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonListarCorredores, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                            .addComponent(jButtonListarCarreras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -117,7 +183,16 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButtonModificarCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonConsultarCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonListarCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(316, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(jLabel2)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCrearCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAnularCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonModificarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonConsultarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonListarCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -212,6 +287,65 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonModificarCorredorActionPerformed
 
+    private void jButtonCrearCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearCarreraActionPerformed
+        DatosCarrera datosCarrera = new DatosCarrera(this, true);
+        datosCarrera.setVisible(true);
+    }//GEN-LAST:event_jButtonCrearCarreraActionPerformed
+
+    private void jButtonListarCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarCarrerasActionPerformed
+        ListadoCarreras listadoCarreras = new ListadoCarreras(this, true);
+        listadoCarreras.setVisible(true);
+    }//GEN-LAST:event_jButtonListarCarrerasActionPerformed
+
+    private void jButtonConsultarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarCarreraActionPerformed
+        String dato = JOptionPane.showInputDialog(this, "NOMBRE CARRERA", JOptionPane.QUESTION_MESSAGE);
+        try {
+            if (dato != "" || dato != null) {
+                carrera = logCarrera.buscarCarrera(dato);
+                if (carrera != null) {
+                    MostrarUnaCarrera mostrarUnaCarrera = new MostrarUnaCarrera(this, true, carrera);
+                    mostrarUnaCarrera.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "La carrera no existe", "", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        } catch (NullPointerException e) {
+
+        }
+    }//GEN-LAST:event_jButtonConsultarCarreraActionPerformed
+
+    private void jButtonAnularCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnularCarreraActionPerformed
+        String dato = JOptionPane.showInputDialog(this, "NOMBRE CARRERA", JOptionPane.QUESTION_MESSAGE);
+        if (dato != "" && dato != null) {
+            carrera = logCarrera.buscarCarrera(dato);
+            int confirmar = JOptionPane.showConfirmDialog(this, "Anular carrera: " + dato, "CONFIRMACIÓN", JOptionPane.YES_NO_OPTION);
+            if (confirmar == JOptionPane.YES_OPTION) {
+                boolean borrado = logCarrera.anularCarrera(carrera);
+                if (borrado) {
+                    JOptionPane.showMessageDialog(this, "carrera eliminada", "", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al eliminar", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_jButtonAnularCarreraActionPerformed
+
+    private void jButtonModificarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarCarreraActionPerformed
+        String dato = JOptionPane.showInputDialog(this, "Nombre carrera", "", JOptionPane.QUESTION_MESSAGE);
+        try {
+            if (dato != "" && dato != null) {
+                carrera = logCarrera.buscarCarrera(dato);
+                if (carrera != null) {
+                    ModificarCarrera modificarCarrera = new ModificarCarrera(this, true, carrera);
+                    modificarCarrera.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "NO EXISTE", "ERROR", JOptionPane.ERROR);
+                }
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButtonModificarCarreraActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -250,11 +384,17 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAltaCorredor;
+    private javax.swing.JButton jButtonAnularCarrera;
     private javax.swing.JButton jButtonBajaCorredor;
+    private javax.swing.JButton jButtonConsultarCarrera;
     private javax.swing.JButton jButtonConsultarCorredor;
+    private javax.swing.JButton jButtonCrearCarrera;
+    private javax.swing.JButton jButtonListarCarreras;
     private javax.swing.JButton jButtonListarCorredores;
+    private javax.swing.JButton jButtonModificarCarrera;
     private javax.swing.JButton jButtonModificarCorredor;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,42 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package practica_segundaIdea.corredor_gui;
+package practica_segundaIdea.carreras_gui;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.RowSorter.SortKey;
 import javax.swing.SortOrder;
 import javax.swing.table.TableRowSorter;
-import practica_segundaIdea.corredor_gui.tableModelCorredores.CorredoresTableModel;
-import practica_segundaIdea.logica.LogicaCorredor;
+import practica_segundaIdea.carreras_gui.tableModelCarrera.CarreraTableModel;
+import practica_segundaIdea.logica.LogicaCarrera;
 
 /**
  *
  * @author USER
  */
-public class ListadoDeCorredores extends javax.swing.JDialog {
+public class ListadoCarreras extends javax.swing.JDialog {
 
-    LogicaCorredor lc = new LogicaCorredor();
+    LogicaCarrera logCarrera = new LogicaCarrera();
 
     /**
-     * Creates new form ListadoDeCorredores
+     * Creates new form ListadoCarreras
      */
-    public ListadoDeCorredores(java.awt.Frame parent, boolean modal) {
+    public ListadoCarreras(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        rellenarTablaCorredores();      
+        rellenarTableCarrera();
     }
 
-    private void rellenarTablaCorredores() {
-        CorredoresTableModel ctm = new CorredoresTableModel(lc.getListaCorredores());
-        jTableCorredores.setModel(ctm);
-
-        TableRowSorter<CorredoresTableModel> sorter = new TableRowSorter<>(ctm);
-        jTableCorredores.setRowSorter(sorter);
-
+    private void rellenarTableCarrera() {
+        CarreraTableModel ctm = new CarreraTableModel(logCarrera.getListaCarreras());
+        jTableListaCarreras.setModel(ctm);
+        TableRowSorter<CarreraTableModel> sorter = new TableRowSorter<>(ctm);
+        jTableListaCarreras.setRowSorter(sorter);
         List<SortKey> sortKeys = new ArrayList<>();
-        sortKeys.add(new SortKey(0, SortOrder.ASCENDING));
+        sortKeys.add(new SortKey(2, SortOrder.ASCENDING));
         sorter.setSortKeys(sortKeys);
     }
 
@@ -53,11 +51,11 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableCorredores = new javax.swing.JTable();
+        jTableListaCarreras = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTableCorredores.setModel(new javax.swing.table.DefaultTableModel(
+        jTableListaCarreras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -68,21 +66,20 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTableCorredores);
+        jScrollPane1.setViewportView(jTableListaCarreras);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -110,6 +107,6 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableCorredores;
+    private javax.swing.JTable jTableListaCarreras;
     // End of variables declaration//GEN-END:variables
 }
