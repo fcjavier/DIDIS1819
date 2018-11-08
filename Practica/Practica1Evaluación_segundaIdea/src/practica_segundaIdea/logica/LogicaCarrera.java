@@ -24,6 +24,11 @@ public class LogicaCarrera {
     public List<Carrera> getListaCarreras() {
         return listaCarreras;
     }
+
+    public void cargarListaCarreras(List<Carrera> carreras){
+        listaCarreras=carreras;
+    }
+    
     public Carrera buscarCarrera(String nomCarrera){
         Carrera carrera=null;
         for(Carrera c: listaCarreras){

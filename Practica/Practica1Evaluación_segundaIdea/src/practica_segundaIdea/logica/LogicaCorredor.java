@@ -32,7 +32,7 @@ public class LogicaCorredor {
     public List<Corredor> getListaCorredores() {
         return listaCorredores;
     }
-    public void cargarLista(List<Corredor> lista){
+    public void cargarListaCorredor(List<Corredor> lista){
         listaCorredores=lista;
     }
 

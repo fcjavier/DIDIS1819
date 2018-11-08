@@ -34,8 +34,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         cargarFichero();
     }
     private void cargarFichero(){
-        lc.cargarLista(lf.abrirFicheroCSVLectura("corredor.csv"));
+        lc.cargarListaCorredor(lf.abrirFicheroCSVLecturaCorredor("corredor.csv"));
+        logCarrera.cargarListaCarreras(lf.abrirFicheroCSVLecturaCarrera("carreras.csv"));
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -375,8 +377,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonModificarCarreraActionPerformed
 
     private void jButtonGuardarRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarRegistrosActionPerformed
-       boolean respuesta= lf.abrirFicheroCSVEscritura("corredor.csv", lc.getListaCorredores());
-       if(respuesta){
+       boolean respuestaCorredor= lf.abrirFicheroCSVEscrituraCorredor("corredor.csv", lc.getListaCorredores());
+       boolean respuestaCarrera=lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logCarrera.getListaCarreras());
+       if(respuestaCorredor && respuestaCarrera){
            JOptionPane.showMessageDialog(this, "GUARDADO", "", JOptionPane.INFORMATION_MESSAGE);
        }else{
            JOptionPane.showMessageDialog(this, "ERROR AL GUARDAR", "", JOptionPane.INFORMATION_MESSAGE);
