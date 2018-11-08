@@ -32,6 +32,9 @@ public class LogicaCorredor {
     public List<Corredor> getListaCorredores() {
         return listaCorredores;
     }
+    public void cargarLista(List<Corredor> lista){
+        listaCorredores=lista;
+    }
 
     /**
      * Método que comprueba que la longitud del dni sea la correcta

@@ -12,6 +12,7 @@ import practica_segundaIdea.dto.Carrera;
 import practica_segundaIdea.dto.Corredor;
 import practica_segundaIdea.logica.LogicaCarrera;
 import practica_segundaIdea.logica.LogicaCorredor;
+import practica_segundaIdea.logica.LogicaFicheros;
 
 /**
  *
@@ -21,6 +22,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     LogicaCorredor lc = new LogicaCorredor();
     LogicaCarrera logCarrera = new LogicaCarrera();
+    LogicaFicheros lf=new LogicaFicheros();
     Corredor c = new Corredor();
     Carrera carrera = new Carrera();
 
@@ -29,8 +31,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
      */
     public PaginaPrincipal() {
         initComponents();
+        cargarFichero();
     }
-
+    private void cargarFichero(){
+        lc.cargarLista(lf.abrirFicheroCSVLectura("corredor.csv"));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,6 +58,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jButtonModificarCarrera = new javax.swing.JButton();
         jButtonConsultarCarrera = new javax.swing.JButton();
         jButtonListarCarreras = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jButtonGuardarRegistros = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,10 +141,24 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel3.setText("OTRAS   GESTIONES");
+
+        jButtonGuardarRegistros.setText("GURARDAR REGISTROS");
+        jButtonGuardarRegistros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarRegistrosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(230, 230, 230))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -168,7 +189,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonListarCorredores, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                            .addComponent(jButtonListarCarreras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButtonListarCarreras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jButtonGuardarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -192,7 +216,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButtonModificarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonConsultarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonListarCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonGuardarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -346,6 +374,15 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonModificarCarreraActionPerformed
 
+    private void jButtonGuardarRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarRegistrosActionPerformed
+       boolean respuesta= lf.abrirFicheroCSVEscritura("corredor.csv", lc.getListaCorredores());
+       if(respuesta){
+           JOptionPane.showMessageDialog(this, "GUARDADO", "", JOptionPane.INFORMATION_MESSAGE);
+       }else{
+           JOptionPane.showMessageDialog(this, "ERROR AL GUARDAR", "", JOptionPane.INFORMATION_MESSAGE);
+       }
+    }//GEN-LAST:event_jButtonGuardarRegistrosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -389,12 +426,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonConsultarCarrera;
     private javax.swing.JButton jButtonConsultarCorredor;
     private javax.swing.JButton jButtonCrearCarrera;
+    private javax.swing.JButton jButtonGuardarRegistros;
     private javax.swing.JButton jButtonListarCarreras;
     private javax.swing.JButton jButtonListarCorredores;
     private javax.swing.JButton jButtonModificarCarrera;
     private javax.swing.JButton jButtonModificarCorredor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
