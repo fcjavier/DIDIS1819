@@ -7,11 +7,15 @@ package practica_segundaIdea.carreras_gui;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.RowSorter.SortKey;
 import javax.swing.SortOrder;
 import javax.swing.table.TableRowSorter;
 import practica_segundaIdea.carreras_gui.tableModelCarrera.CarreraTableModel;
+import practica_segundaIdea.dto.Carrera;
 import practica_segundaIdea.logica.LogicaCarrera;
+import practica_segundaIdea.logica.LogicaFicheros;
+import practica_segundaIdea.run.PaginaPrincipal;
 
 /**
  *
@@ -20,18 +24,21 @@ import practica_segundaIdea.logica.LogicaCarrera;
 public class ListadoCarreras extends javax.swing.JDialog {
 
     LogicaCarrera logCarrera = new LogicaCarrera();
-
+    LogicaFicheros lf=new LogicaFicheros();
+    PaginaPrincipal paginaPrincipal;
+    CarreraTableModel ctm;
     /**
      * Creates new form ListadoCarreras
      */
     public ListadoCarreras(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        paginaPrincipal=(PaginaPrincipal) parent;
         initComponents();
         rellenarTableCarrera();
     }
 
     private void rellenarTableCarrera() {
-        CarreraTableModel ctm = new CarreraTableModel(logCarrera.getListaCarreras());
+        ctm = new CarreraTableModel(logCarrera.getListaCarreras());
         jTableListaCarreras.setModel(ctm);
         TableRowSorter<CarreraTableModel> sorter = new TableRowSorter<>(ctm);
         jTableListaCarreras.setRowSorter(sorter);
@@ -52,6 +59,9 @@ public class ListadoCarreras extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableListaCarreras = new javax.swing.JTable();
+        jButtonNuevaAlta = new javax.swing.JButton();
+        jButtonBaja = new javax.swing.JButton();
+        jButtonModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -68,19 +78,53 @@ public class ListadoCarreras extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTableListaCarreras);
 
+        jButtonNuevaAlta.setText(org.openide.util.NbBundle.getMessage(ListadoCarreras.class, "ListadoCarreras.jButtonNuevaAlta.text")); // NOI18N
+        jButtonNuevaAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNuevaAltaActionPerformed(evt);
+            }
+        });
+
+        jButtonBaja.setText(org.openide.util.NbBundle.getMessage(ListadoCarreras.class, "ListadoCarreras.jButtonBaja.text")); // NOI18N
+        jButtonBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBajaActionPerformed(evt);
+            }
+        });
+
+        jButtonModificar.setText(org.openide.util.NbBundle.getMessage(ListadoCarreras.class, "ListadoCarreras.jButtonModificar.text")); // NOI18N
+        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jButtonNuevaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jButtonModificar)
+                .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonNuevaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -103,8 +147,46 @@ public class ListadoCarreras extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonNuevaAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevaAltaActionPerformed
+         DatosCarrera datosCarrera=new DatosCarrera(paginaPrincipal, true);
+         datosCarrera.setVisible(true);
+        ctm.fireTableDataChanged();
+    }//GEN-LAST:event_jButtonNuevaAltaActionPerformed
+
+    private void jButtonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBajaActionPerformed
+        try{ 
+        int seleccion=jTableListaCarreras.convertRowIndexToModel(jTableListaCarreras.getSelectedRow());
+          int opcion=JOptionPane.showConfirmDialog(this, "¿Desea eliminar la carrera?", "BORRADO", JOptionPane.YES_NO_OPTION);
+          if(opcion==JOptionPane.YES_OPTION){
+              logCarrera.getListaCarreras().remove(seleccion);              
+              lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logCarrera.getListaCarreras());
+              JOptionPane.showMessageDialog(this, "Carrera eliminada", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+              ctm.fireTableDataChanged();
+          }else{
+              JOptionPane.showMessageDialog(this, "Error al eliminar", "ERROR", JOptionPane.ERROR);
+          }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "No ha seleccionado carrera", "", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonBajaActionPerformed
+
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+        try{  
+        int seleccion=jTableListaCarreras.convertRowIndexToModel(jTableListaCarreras.getSelectedRow());
+          ModificarCarrera modificarCarrera=new ModificarCarrera(paginaPrincipal,
+                  true, logCarrera.getListaCarreras().get(seleccion));
+          modificarCarrera.setVisible(true);
+          ctm.fireTableDataChanged();
+          }catch(Exception e){
+              JOptionPane.showMessageDialog(this, "No ha seleccionado carrera", "", JOptionPane.INFORMATION_MESSAGE);
+          }
+    }//GEN-LAST:event_jButtonModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBaja;
+    private javax.swing.JButton jButtonModificar;
+    private javax.swing.JButton jButtonNuevaAlta;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableListaCarreras;

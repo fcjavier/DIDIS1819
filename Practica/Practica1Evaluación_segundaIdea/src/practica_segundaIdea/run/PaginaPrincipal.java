@@ -33,7 +33,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         initComponents();
         cargarFichero();
     }
-    private void cargarFichero(){
+    public void cargarFichero(){
         lc.cargarListaCorredor(lf.abrirFicheroCSVLecturaCorredor("corredor.csv"));
         logCarrera.cargarListaCarreras(lf.abrirFicheroCSVLecturaCarrera("carreras.csv"));
     }

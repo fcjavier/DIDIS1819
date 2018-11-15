@@ -19,6 +19,7 @@ public class LogicaCorredor {
 
     /**
      * Agrega un nuevo corredor en la lista de corredores.
+     *
      * @param corredor tipo (object).
      */
     public void agregarCorredor(Corredor corredor) {
@@ -27,18 +28,21 @@ public class LogicaCorredor {
 
     /**
      * Devuelve una lista de corredores.
-     * @return  List
+     *
+     * @return List
      */
     public List<Corredor> getListaCorredores() {
         return listaCorredores;
     }
-    public void cargarListaCorredor(List<Corredor> lista){
-        listaCorredores=lista;
+
+    public void cargarListaCorredor(List<Corredor> lista) {
+        listaCorredores = lista;
     }
 
     /**
-     * Método que comprueba que la longitud del dni sea la correcta
-     * y que esté compuesta de ocho números y una letra mayúscula.
+     * Método que comprueba que la longitud del dni sea la correcta y que esté
+     * compuesta de ocho números y una letra mayúscula.
+     *
      * @param dni Recibe un parámetro en forma de String con el valor del dni.
      * @return boolean
      */
@@ -64,6 +68,7 @@ public class LogicaCorredor {
 
     /**
      * Método para comprobar que el número de teléfono tiene 9 dígitos.
+     *
      * @param tlf Recibe un String con el valor del teléfono.
      * @return boolean.
      */
@@ -82,6 +87,7 @@ public class LogicaCorredor {
 
     /**
      * Metodo que busca un corredor dentro de una lista por su dni.
+     *
      * @param dato String con el valor del dni.
      * @return un valor de tipo (object) con un corredor, (null) si no existe.
      */
@@ -97,6 +103,7 @@ public class LogicaCorredor {
 
     /**
      * Método para dar de baja un corredor.
+     *
      * @param c Parámetro de tipo (object) con los datos del corredor.
      * @return boolean.
      */

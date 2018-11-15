@@ -6,7 +6,6 @@
 package practica_segundaIdea.carreras_gui.tableModelCarrera;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import practica_segundaIdea.dto.Carrera;

@@ -12,8 +12,11 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
+import practica_segundaIdea.carreras_gui.tableModelCarrera.CarreraTableModel;
 import practica_segundaIdea.dto.Carrera;
 import practica_segundaIdea.logica.LogicaCarrera;
+import practica_segundaIdea.logica.LogicaFicheros;
+import practica_segundaIdea.run.PaginaPrincipal;
 
 /**
  *
@@ -21,17 +24,20 @@ import practica_segundaIdea.logica.LogicaCarrera;
  */
 public class DatosCarrera extends javax.swing.JDialog {
 
+    PaginaPrincipal paginaPrincipal;
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     LogicaCarrera logicaCarrera = new LogicaCarrera();
-
+    LogicaFicheros lf = new LogicaFicheros();
+    CarreraTableModel ctm=new CarreraTableModel(logicaCarrera.getListaCarreras());
     /**
      * Creates new form DatosCarrera
      */
     public DatosCarrera(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        paginaPrincipal = (PaginaPrincipal) parent;
         initComponents();
         jButtonRegistrarCarrera.setEnabled(false);
-        ValidationGroup group = validationPanelCarreras.getValidationGroup();         
+        ValidationGroup group = validationPanelCarreras.getValidationGroup();
         group.add(jTextFieldLugarCarrera, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldNombreCarrera, StringValidators.REQUIRE_NON_EMPTY_STRING);
         validationPanelCarreras.addChangeListener(new ChangeListener() {
@@ -55,12 +61,13 @@ public class DatosCarrera extends javax.swing.JDialog {
         Carrera carrera = new Carrera(nombre, fecha, lugar, max);
         return carrera;
     }
-    private void masRegistros(){
-        int respuesta=JOptionPane.showConfirmDialog(this, "NUEVA CARRERA","",JOptionPane.YES_NO_OPTION);
-        if(respuesta==JOptionPane.YES_OPTION){
+
+    private void masRegistros() {
+        int respuesta = JOptionPane.showConfirmDialog(this, "NUEVA CARRERA", "", JOptionPane.YES_NO_OPTION);
+        if (respuesta == JOptionPane.YES_OPTION) {
             jTextFieldNombreCarrera.setText("");
             jTextFieldLugarCarrera.setText("");
-        }else{
+        } else {
             dispose();
         }
     }
@@ -197,8 +204,9 @@ public class DatosCarrera extends javax.swing.JDialog {
 
     private void jButtonRegistrarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarCarreraActionPerformed
         if (logicaCarrera.agregarCarrera(crearCarrera())) {
-            JOptionPane.showMessageDialog(this, "Carrera registrada", "CONFIRMACIÓN", JOptionPane.INFORMATION_MESSAGE);
-        masRegistros();
+            lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logicaCarrera.getListaCarreras());
+            JOptionPane.showMessageDialog(this, "Carrera registrada", "CONFIRMACIÓN", JOptionPane.INFORMATION_MESSAGE);             
+            masRegistros();
         } else {
             JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
