@@ -35,6 +35,12 @@ public class LogicaCorredor {
         return listaCorredores;
     }
 
+    /**
+     * Método que crea una colección de corredores. Recibe un parámetro de tipo
+     * List.
+     *
+     * @param lista
+     */
     public void cargarListaCorredor(List<Corredor> lista) {
         listaCorredores = lista;
     }

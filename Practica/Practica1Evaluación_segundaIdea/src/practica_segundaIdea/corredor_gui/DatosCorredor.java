@@ -14,6 +14,7 @@ import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
 import practica_segundaIdea.dto.Corredor;
 import practica_segundaIdea.logica.LogicaCorredor;
+import practica_segundaIdea.logica.LogicaFicheros;
 import practica_segundaIdea.run.PaginaPrincipal;
 
 /**
@@ -23,6 +24,7 @@ import practica_segundaIdea.run.PaginaPrincipal;
 public class DatosCorredor extends javax.swing.JDialog {
 
     LogicaCorredor lc = new LogicaCorredor();
+    LogicaFicheros lf = new LogicaFicheros();
     private PaginaPrincipal paginaPrincipal;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -53,6 +55,12 @@ public class DatosCorredor extends javax.swing.JDialog {
         });
     }
 
+    /**
+     * Método para crear un nuevo corredor, tomando los datos del panel de
+     * vistas. Cambia la fecha de un dato tipo Date a un String, que es el tipo
+     * de dato requerido en el objeto corredor. A demás añade el nuevo corredor
+     * a la lista de corredores.
+     */
     public void crearCorredor() {
         String nombre = jTextFieldNombre.getText();
         String dni = jTextFieldDNI.getText();
@@ -225,11 +233,13 @@ public class DatosCorredor extends javax.swing.JDialog {
         }
         if (registrar) {
             crearCorredor();
+            lf.abrirFicheroCSVEscrituraCorredor("corredor.csv", lc.getListaCorredores());
             int opcion = JOptionPane.showConfirmDialog(this, "NUEVO CORREDOR", "REGISTRO REALIZADO", JOptionPane.YES_NO_OPTION);
             if (opcion == JOptionPane.NO_OPTION) {
                 this.dispose();
             }
             if (opcion == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(this, "Corredor Registrado", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
                 jTextFieldNombre.setText("");
                 jTextFieldDNI.setText("");
                 jTextFieldDireccion.setText("");

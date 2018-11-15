@@ -14,15 +14,15 @@ import practica_segundaIdea.dto.Carrera;
  *
  * @author USER
  */
-public class CarreraTableModel extends AbstractTableModel{
+public class CarreraTableModel extends AbstractTableModel {
 
-    private List<Carrera> listaCarreras=new ArrayList<>();
-    private String[] nomColumnas={"Nombre","Fecha","Lugar","Max Corredores"};
+    private List<Carrera> listaCarreras = new ArrayList<>();
+    private String[] nomColumnas = {"Nombre", "Fecha", "Lugar", "Max Corredores"};
 
     public CarreraTableModel(List<Carrera> lista) {
-        this.listaCarreras=lista;
+        this.listaCarreras = lista;
     }
- 
+
     @Override
     public int getRowCount() {
         return listaCarreras.size();
@@ -35,11 +35,11 @@ public class CarreraTableModel extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int fila, int columna) {
-        switch(columna){
+        switch (columna) {
             case 0:
                 return listaCarreras.get(fila).getNomCarrera();
             case 1:
-                 return listaCarreras.get(fila).getFecha();
+                return listaCarreras.get(fila).getFecha();
             case 2:
                 return listaCarreras.get(fila).getLugar();
             case 3:
@@ -50,7 +50,7 @@ public class CarreraTableModel extends AbstractTableModel{
 
     @Override
     public String getColumnName(int columna) {
-        return nomColumnas[columna]; 
+        return nomColumnas[columna];
     }
-    
+
 }

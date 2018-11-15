@@ -7,11 +7,14 @@ package practica_segundaIdea.corredor_gui;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.RowSorter.SortKey;
 import javax.swing.SortOrder;
 import javax.swing.table.TableRowSorter;
 import practica_segundaIdea.corredor_gui.tableModelCorredores.CorredoresTableModel;
 import practica_segundaIdea.logica.LogicaCorredor;
+import practica_segundaIdea.logica.LogicaFicheros;
+import practica_segundaIdea.run.PaginaPrincipal;
 
 /**
  *
@@ -20,18 +23,27 @@ import practica_segundaIdea.logica.LogicaCorredor;
 public class ListadoDeCorredores extends javax.swing.JDialog {
 
     LogicaCorredor lc = new LogicaCorredor();
+    LogicaFicheros lf = new LogicaFicheros();
+    PaginaPrincipal paginaPrincipal;
+    CorredoresTableModel ctm;
 
     /**
      * Creates new form ListadoDeCorredores
      */
     public ListadoDeCorredores(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        paginaPrincipal = (PaginaPrincipal) parent;
         initComponents();
-        rellenarTablaCorredores();      
+        rellenarTablaCorredores();
     }
 
+    /**
+     * Método que carga la cabecera y los datos en la tabla que muestra los
+     * corredores.Dandole una ordenación por defecto y la posibilidad del cambio
+     * en la ordenación.
+     */
     private void rellenarTablaCorredores() {
-        CorredoresTableModel ctm = new CorredoresTableModel(lc.getListaCorredores());
+        ctm = new CorredoresTableModel(lc.getListaCorredores());
         jTableCorredores.setModel(ctm);
 
         TableRowSorter<CorredoresTableModel> sorter = new TableRowSorter<>(ctm);
@@ -54,6 +66,9 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableCorredores = new javax.swing.JTable();
+        jButtonNuevaAlta = new javax.swing.JButton();
+        jButtonBaja = new javax.swing.JButton();
+        jButtonModificacion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -70,6 +85,27 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTableCorredores);
 
+        jButtonNuevaAlta.setText("Nueva Alta");
+        jButtonNuevaAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNuevaAltaActionPerformed(evt);
+            }
+        });
+
+        jButtonBaja.setText("Baja");
+        jButtonBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBajaActionPerformed(evt);
+            }
+        });
+
+        jButtonModificacion.setText("Modificación");
+        jButtonModificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificacionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -78,12 +114,25 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jButtonNuevaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(jButtonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonModificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonNuevaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonModificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -106,8 +155,47 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonNuevaAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevaAltaActionPerformed
+        DatosCorredor datosCorredor = new DatosCorredor(paginaPrincipal, true);
+        datosCorredor.setVisible(true);
+        ctm.fireTableDataChanged();
+    }//GEN-LAST:event_jButtonNuevaAltaActionPerformed
+
+    private void jButtonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBajaActionPerformed
+        try {
+            int seleccion = jTableCorredores.convertRowIndexToModel(jTableCorredores.getSelectedRow());
+            int opcion = JOptionPane.showConfirmDialog(this, "¿Desea eliminar al corredor?", "BORRADO", JOptionPane.YES_NO_OPTION);
+            if (opcion == JOptionPane.YES_OPTION) {
+                lc.getListaCorredores().remove(seleccion);
+                lf.abrirFicheroCSVEscrituraCorredor("corredor.csv", lc.getListaCorredores());
+                JOptionPane.showMessageDialog(this, "Corredor eliminado", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+                ctm.fireTableDataChanged();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al eliminar", "ERROR", JOptionPane.ERROR);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No ha seleccionado corredor", "", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonBajaActionPerformed
+
+    private void jButtonModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificacionActionPerformed
+        try {
+            int seleccion = jTableCorredores.convertRowIndexToModel(jTableCorredores.getSelectedRow());
+            ModificarDatos modificarDatos = new ModificarDatos(paginaPrincipal,
+                    true, lc.getListaCorredores().get(seleccion));
+            modificarDatos.setVisible(true);
+            lf.abrirFicheroCSVEscrituraCorredor("corredor.csv", lc.getListaCorredores());
+            ctm.fireTableDataChanged();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No ha seleccionado corredor", "", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonModificacionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBaja;
+    private javax.swing.JButton jButtonModificacion;
+    private javax.swing.JButton jButtonNuevaAlta;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableCorredores;

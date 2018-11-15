@@ -12,7 +12,6 @@ import javax.swing.RowSorter.SortKey;
 import javax.swing.SortOrder;
 import javax.swing.table.TableRowSorter;
 import practica_segundaIdea.carreras_gui.tableModelCarrera.CarreraTableModel;
-import practica_segundaIdea.dto.Carrera;
 import practica_segundaIdea.logica.LogicaCarrera;
 import practica_segundaIdea.logica.LogicaFicheros;
 import practica_segundaIdea.run.PaginaPrincipal;
@@ -24,19 +23,24 @@ import practica_segundaIdea.run.PaginaPrincipal;
 public class ListadoCarreras extends javax.swing.JDialog {
 
     LogicaCarrera logCarrera = new LogicaCarrera();
-    LogicaFicheros lf=new LogicaFicheros();
+    LogicaFicheros lf = new LogicaFicheros();
     PaginaPrincipal paginaPrincipal;
     CarreraTableModel ctm;
+
     /**
      * Creates new form ListadoCarreras
      */
     public ListadoCarreras(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        paginaPrincipal=(PaginaPrincipal) parent;
+        paginaPrincipal = (PaginaPrincipal) parent;
         initComponents();
         rellenarTableCarrera();
     }
 
+    /**
+     * Método que se encarga de llenar la tabla de carreras. Cabecera y tantas
+     * filas como registros existan.
+     */
     private void rellenarTableCarrera() {
         ctm = new CarreraTableModel(logCarrera.getListaCarreras());
         jTableListaCarreras.setModel(ctm);
@@ -148,38 +152,39 @@ public class ListadoCarreras extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonNuevaAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevaAltaActionPerformed
-         DatosCarrera datosCarrera=new DatosCarrera(paginaPrincipal, true);
-         datosCarrera.setVisible(true);
+        DatosCarrera datosCarrera = new DatosCarrera(paginaPrincipal, true);
+        datosCarrera.setVisible(true);
         ctm.fireTableDataChanged();
     }//GEN-LAST:event_jButtonNuevaAltaActionPerformed
 
     private void jButtonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBajaActionPerformed
-        try{ 
-        int seleccion=jTableListaCarreras.convertRowIndexToModel(jTableListaCarreras.getSelectedRow());
-          int opcion=JOptionPane.showConfirmDialog(this, "¿Desea eliminar la carrera?", "BORRADO", JOptionPane.YES_NO_OPTION);
-          if(opcion==JOptionPane.YES_OPTION){
-              logCarrera.getListaCarreras().remove(seleccion);              
-              lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logCarrera.getListaCarreras());
-              JOptionPane.showMessageDialog(this, "Carrera eliminada", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-              ctm.fireTableDataChanged();
-          }else{
-              JOptionPane.showMessageDialog(this, "Error al eliminar", "ERROR", JOptionPane.ERROR);
-          }
-        }catch(Exception e){
+        try {
+            int seleccion = jTableListaCarreras.convertRowIndexToModel(jTableListaCarreras.getSelectedRow());
+            int opcion = JOptionPane.showConfirmDialog(this, "¿Desea eliminar la carrera?", "BORRADO", JOptionPane.YES_NO_OPTION);
+            if (opcion == JOptionPane.YES_OPTION) {
+                logCarrera.getListaCarreras().remove(seleccion);
+                lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logCarrera.getListaCarreras());
+                JOptionPane.showMessageDialog(this, "Carrera eliminada", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+                ctm.fireTableDataChanged();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al eliminar", "ERROR", JOptionPane.ERROR);
+            }
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No ha seleccionado carrera", "", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonBajaActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
-        try{  
-        int seleccion=jTableListaCarreras.convertRowIndexToModel(jTableListaCarreras.getSelectedRow());
-          ModificarCarrera modificarCarrera=new ModificarCarrera(paginaPrincipal,
-                  true, logCarrera.getListaCarreras().get(seleccion));
-          modificarCarrera.setVisible(true);
-          ctm.fireTableDataChanged();
-          }catch(Exception e){
-              JOptionPane.showMessageDialog(this, "No ha seleccionado carrera", "", JOptionPane.INFORMATION_MESSAGE);
-          }
+        try {
+            int seleccion = jTableListaCarreras.convertRowIndexToModel(jTableListaCarreras.getSelectedRow());
+            ModificarCarrera modificarCarrera = new ModificarCarrera(paginaPrincipal,
+                    true, logCarrera.getListaCarreras().get(seleccion));
+            modificarCarrera.setVisible(true);
+            lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logCarrera.getListaCarreras());
+            ctm.fireTableDataChanged();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No ha seleccionado carrera", "", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
 

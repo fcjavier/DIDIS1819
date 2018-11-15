@@ -28,7 +28,8 @@ public class DatosCarrera extends javax.swing.JDialog {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     LogicaCarrera logicaCarrera = new LogicaCarrera();
     LogicaFicheros lf = new LogicaFicheros();
-    CarreraTableModel ctm=new CarreraTableModel(logicaCarrera.getListaCarreras());
+    CarreraTableModel ctm = new CarreraTableModel(logicaCarrera.getListaCarreras());
+
     /**
      * Creates new form DatosCarrera
      */
@@ -52,6 +53,12 @@ public class DatosCarrera extends javax.swing.JDialog {
         });
     }
 
+    /**
+     * Método que crea una carrera, a partir de los contenidos en las vistas del
+     * panel.
+     *
+     * @return una carrera(object).
+     */
     private Carrera crearCarrera() {
         String nombre = jTextFieldNombreCarrera.getText();
         Date f = (Date) jSpinnerFechaCarrera.getValue();
@@ -62,6 +69,11 @@ public class DatosCarrera extends javax.swing.JDialog {
         return carrera;
     }
 
+    /**
+     * Método que nos da opción de introducir un nuevo registro. Opción yes
+     * prepara las vistas para nuevos registros, dejandolos vacios y en caso
+     * contrario destruye el panel.
+     */
     private void masRegistros() {
         int respuesta = JOptionPane.showConfirmDialog(this, "NUEVA CARRERA", "", JOptionPane.YES_NO_OPTION);
         if (respuesta == JOptionPane.YES_OPTION) {
@@ -205,7 +217,7 @@ public class DatosCarrera extends javax.swing.JDialog {
     private void jButtonRegistrarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarCarreraActionPerformed
         if (logicaCarrera.agregarCarrera(crearCarrera())) {
             lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logicaCarrera.getListaCarreras());
-            JOptionPane.showMessageDialog(this, "Carrera registrada", "CONFIRMACIÓN", JOptionPane.INFORMATION_MESSAGE);             
+            JOptionPane.showMessageDialog(this, "Carrera registrada", "CONFIRMACIÓN", JOptionPane.INFORMATION_MESSAGE);
             masRegistros();
         } else {
             JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR", "ERROR", JOptionPane.ERROR_MESSAGE);

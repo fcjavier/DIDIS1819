@@ -13,19 +13,28 @@ import practica_segundaIdea.dto.Carrera;
  */
 public class MostrarUnaCarrera extends javax.swing.JDialog {
 
+    Carrera c;
+
     /**
      * Creates new form MostrarUnaCarrera
      */
-    public MostrarUnaCarrera(java.awt.Frame parent, boolean modal,Carrera c) {
+    public MostrarUnaCarrera(java.awt.Frame parent, boolean modal, Carrera c) {
         super(parent, modal);
         initComponents();
+        this.c = c;
+        mostrarDatos();
+    }
+
+    /**
+     * Método que presenta los datos de una carrera en pantalla.
+     */
+    public void mostrarDatos() {
         jLabelNombre.setText(c.getNomCarrera());
         jLabelFecha.setText(c.getFecha());
         jLabelLugar.setText(c.getLugar());
         jLabelMaxParticipantes.setText(String.valueOf(c.getMaxParticipantes()));
     }
 
-     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -123,7 +132,7 @@ public class MostrarUnaCarrera extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- 
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

@@ -28,15 +28,27 @@ public class ModificarDatos extends javax.swing.JDialog {
         cargarDatosCorredor(c);
     }
 
+    /**
+     * Método para obtener los datos de un corredor y rellenar las vistas del
+     * panel en pantalla.
+     *
+     * @param c corredor(object).
+     */
     private void cargarDatosCorredor(Corredor c) {
         jTextFieldNombre.setText(c.getNombre());
         jTextFieldDNI.setText(c.getDni());
         jTextFieldFechaNacimiento.setText(c.getFechaNacimiento());
         jTextFieldDireccion.setText(c.getDireccion());
         jTextFieldTelefono.setText(c.getTelefono());
-        jTextFieldDorsal.setText(c.getDorsal());
+
     }
 
+    /**
+     * Método que recoge los datos despues de las modificaciones y los devuelve
+     * en forma de un objeto de tipo corredor.
+     *
+     * @return corredor(object).
+     */
     private Corredor nuevosDatos() {
         String nombre = jTextFieldNombre.getText();
         String dni = jTextFieldDNI.getText();
@@ -62,15 +74,13 @@ public class ModificarDatos extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldDNI = new javax.swing.JTextField();
         jTextFieldFechaNacimiento = new javax.swing.JTextField();
         jTextFieldDireccion = new javax.swing.JTextField();
         jTextFieldTelefono = new javax.swing.JTextField();
-        jTextFieldDorsal = new javax.swing.JTextField();
         jButtonModificarDatos = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -84,8 +94,6 @@ public class ModificarDatos extends javax.swing.JDialog {
 
         jLabel5.setText(org.openide.util.NbBundle.getMessage(ModificarDatos.class, "ModificarDatos.jLabel5.text")); // NOI18N
 
-        jLabel6.setText(org.openide.util.NbBundle.getMessage(ModificarDatos.class, "ModificarDatos.jLabel6.text")); // NOI18N
-
         jTextFieldNombre.setText(org.openide.util.NbBundle.getMessage(ModificarDatos.class, "ModificarDatos.jTextFieldNombre.text")); // NOI18N
 
         jTextFieldDNI.setText(org.openide.util.NbBundle.getMessage(ModificarDatos.class, "ModificarDatos.jTextFieldDNI.text")); // NOI18N
@@ -96,8 +104,6 @@ public class ModificarDatos extends javax.swing.JDialog {
 
         jTextFieldTelefono.setText(org.openide.util.NbBundle.getMessage(ModificarDatos.class, "ModificarDatos.jTextFieldTelefono.text")); // NOI18N
 
-        jTextFieldDorsal.setText(org.openide.util.NbBundle.getMessage(ModificarDatos.class, "ModificarDatos.jTextFieldDorsal.text")); // NOI18N
-
         jButtonModificarDatos.setText(org.openide.util.NbBundle.getMessage(ModificarDatos.class, "ModificarDatos.jButtonModificarDatos.text")); // NOI18N
         jButtonModificarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,10 +111,10 @@ public class ModificarDatos extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setText(org.openide.util.NbBundle.getMessage(ModificarDatos.class, "ModificarDatos.jButton2.text")); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCancelar.setText(org.openide.util.NbBundle.getMessage(ModificarDatos.class, "ModificarDatos.jButtonCancelar.text")); // NOI18N
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonCancelarActionPerformed(evt);
             }
         });
 
@@ -119,7 +125,6 @@ public class ModificarDatos extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,11 +138,10 @@ public class ModificarDatos extends javax.swing.JDialog {
                     .addComponent(jTextFieldFechaNacimiento)
                     .addComponent(jTextFieldDireccion)
                     .addComponent(jTextFieldTelefono)
-                    .addComponent(jTextFieldDorsal, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButtonModificarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -164,15 +168,11 @@ public class ModificarDatos extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextFieldDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonModificarDatos, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jButtonModificarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -188,8 +188,8 @@ public class ModificarDatos extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -207,24 +207,22 @@ public class ModificarDatos extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButtonModificarDatosActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonModificarDatos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldDNI;
     private javax.swing.JTextField jTextFieldDireccion;
-    private javax.swing.JTextField jTextFieldDorsal;
     private javax.swing.JTextField jTextFieldFechaNacimiento;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldTelefono;

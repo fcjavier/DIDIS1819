@@ -17,7 +17,6 @@ public class Corredor {
     private String fechaNacimiento;
     private String direccion;
     private String telefono;
-    private String dorsal;
 
     //Constructores
     public Corredor() {
@@ -71,14 +70,5 @@ public class Corredor {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
-    public String getDorsal() {
-        return dorsal;
-    }
-
-    public void setDorsal(String dorsal) {
-        this.dorsal = dorsal;
-    }
- 
 
 }

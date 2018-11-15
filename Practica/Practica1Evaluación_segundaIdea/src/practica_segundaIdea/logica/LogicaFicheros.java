@@ -27,6 +27,15 @@ public class LogicaFicheros {
     private List<Corredor> lista;
     private List<Carrera> carreras;
 
+    /**
+     * Método que abre un fichero de caracteres para su escritura. Recibe dos
+     * parámetros un String con el nombre del fichero en el que se quiere
+     * escribir y otro con una lista de corredores de tipo List.
+     *
+     * @param fichero
+     * @param lista
+     * @return boolean
+     */
     public boolean abrirFicheroCSVEscrituraCorredor(String fichero, List<Corredor> lista) {
         boolean correcto = true;
         FileWriter fw = null;
@@ -48,6 +57,15 @@ public class LogicaFicheros {
         return correcto;
     }
 
+    /**
+     * Método que abre un fichero de caracteres para su escritura. Recibe dos
+     * parámetros un String con el nombre del fichero en el que se quiere
+     * escribir y otro con una lista de carreras de tipo List.
+     *
+     * @param fichero
+     * @param carreras
+     * @return boolean
+     */
     public boolean abrirFicheroCSVEscrituraCarrera(String fichero, List<Carrera> carreras) {
         boolean correcto = true;
         FileWriter fw = null;
@@ -69,6 +87,14 @@ public class LogicaFicheros {
         return correcto;
     }
 
+    /**
+     * Método para la lectura de un fichero de caracteres. Recibe un parámetro
+     * con el nombre del fichero y guardando los datos en una colección de tipo
+     * List.
+     *
+     * @param fichero con el nombre del fichero a leer.
+     * @return List de corredores.
+     */
     public List<Corredor> abrirFicheroCSVLecturaCorredor(String fichero) {
         lista = new ArrayList<>();
         FileReader fr = null;
@@ -88,6 +114,14 @@ public class LogicaFicheros {
         return lista;
     }
 
+    /**
+     * Método para la lectura de un fichero de caracteres. Recibe un parámetro
+     * con el nombre del fichero y guardando los datos en una colección de tipo
+     * List.
+     *
+     * @param fichero con el nombre del fichero a leer.
+     * @return List de carreras.
+     */
     public List<Carrera> abrirFicheroCSVLecturaCarrera(String fichero) {
         carreras = new ArrayList<>();
         FileReader fr = null;
@@ -107,6 +141,13 @@ public class LogicaFicheros {
         return carreras;
     }
 
+    /**
+     * Método que extrae los tokens existentes, en una cadena de caracteres.
+     * Recibe un String con la cadena a tokenizar.
+     *
+     * @param cadena
+     * @return un corredor tipo (object).
+     */
     private Corredor tokenizarCorredor(String cadena) {
         Corredor c = null;
         StringTokenizer st = new StringTokenizer(cadena, ",");
@@ -121,6 +162,13 @@ public class LogicaFicheros {
         return c;
     }
 
+    /**
+     * Método que extrae los tokens existentes en una cadena de caracteres.
+     * Recibe un String con la cadena a tokenizar.
+     *
+     * @param cadena
+     * @return una carrera tipo (object).
+     */
     private Carrera tokenizarCarrera(String linea) {
         Carrera c = null;
         StringTokenizer st = new StringTokenizer(linea, ",");
