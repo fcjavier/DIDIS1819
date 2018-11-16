@@ -12,6 +12,8 @@ import javax.swing.RowSorter.SortKey;
 import javax.swing.SortOrder;
 import javax.swing.table.TableRowSorter;
 import practica_segundaIdea.carreras_gui.tableModelCarrera.CarreraTableModel;
+import practica_segundaIdea.corredor_gui.ListadoDeCorredores;
+import practica_segundaIdea.dto.Carrera;
 import practica_segundaIdea.logica.LogicaCarrera;
 import practica_segundaIdea.logica.LogicaFicheros;
 import practica_segundaIdea.run.PaginaPrincipal;
@@ -26,7 +28,8 @@ public class ListadoCarreras extends javax.swing.JDialog {
     LogicaFicheros lf = new LogicaFicheros();
     PaginaPrincipal paginaPrincipal;
     CarreraTableModel ctm;
-
+    int opcion=0;
+    Carrera carrera;
     /**
      * Creates new form ListadoCarreras
      */
@@ -66,6 +69,8 @@ public class ListadoCarreras extends javax.swing.JDialog {
         jButtonNuevaAlta = new javax.swing.JButton();
         jButtonBaja = new javax.swing.JButton();
         jButtonModificar = new javax.swing.JButton();
+        jButtonAgregarCorredor = new javax.swing.JButton();
+        jButtonParticipantes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -103,21 +108,35 @@ public class ListadoCarreras extends javax.swing.JDialog {
             }
         });
 
+        jButtonAgregarCorredor.setText(org.openide.util.NbBundle.getMessage(ListadoCarreras.class, "ListadoCarreras.jButtonAgregarCorredor.text")); // NOI18N
+        jButtonAgregarCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarCorredorActionPerformed(evt);
+            }
+        });
+
+        jButtonParticipantes.setText(org.openide.util.NbBundle.getMessage(ListadoCarreras.class, "ListadoCarreras.jButtonParticipantes.text")); // NOI18N
+        jButtonParticipantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonParticipantesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jButtonNuevaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addComponent(jButtonNuevaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonModificar)
-                .addGap(24, 24, 24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonAgregarCorredor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonParticipantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +146,9 @@ public class ListadoCarreras extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonNuevaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAgregarCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 23, Short.MAX_VALUE))
         );
 
@@ -187,11 +208,31 @@ public class ListadoCarreras extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
+    private void jButtonAgregarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarCorredorActionPerformed
+         int opcion=jTableListaCarreras.convertRowIndexToModel(jTableListaCarreras.getSelectedRow());
+         int seleccion=JOptionPane.showConfirmDialog(this, "¿EXISTE EL CORREDOR?", "", JOptionPane.YES_NO_OPTION);
+         if(seleccion==JOptionPane.YES_OPTION){
+             carrera=logCarrera.getListaCarreras().get(opcion);
+             ListadoDeCorredores listadoDeCorredores=new ListadoDeCorredores(paginaPrincipal, true,carrera);
+             listadoDeCorredores.setVisible(true);
+         }
+    }//GEN-LAST:event_jButtonAgregarCorredorActionPerformed
+
+    private void jButtonParticipantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonParticipantesActionPerformed
+         
+         opcion=jTableListaCarreras.convertRowIndexToModel(jTableListaCarreras.getSelectedRow());
+         carrera=logCarrera.getListaCarreras().get(opcion);
+         ListaParticipantesCarrera listaParticipantesCarrera=new ListaParticipantesCarrera(paginaPrincipal, true,carrera);
+         listaParticipantesCarrera.setVisible(true);
+    }//GEN-LAST:event_jButtonParticipantesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAgregarCorredor;
     private javax.swing.JButton jButtonBaja;
     private javax.swing.JButton jButtonModificar;
     private javax.swing.JButton jButtonNuevaAlta;
+    private javax.swing.JButton jButtonParticipantes;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableListaCarreras;

@@ -16,7 +16,7 @@ import practica_segundaIdea.dto.Carrera;
 public class LogicaCarrera {
 
     private static List<Carrera> listaCarreras = new ArrayList<Carrera>();
-
+    private int aux;
     /**
      * Método que agrega una carrera a la lista de carreras
      *
@@ -68,4 +68,11 @@ public class LogicaCarrera {
         return listaCarreras.remove(c);
     }
 
+    public int getAux() {
+        return aux;
+    }
+
+    public void setAux(int aux) {
+        this.aux = aux;
+    } 
 }

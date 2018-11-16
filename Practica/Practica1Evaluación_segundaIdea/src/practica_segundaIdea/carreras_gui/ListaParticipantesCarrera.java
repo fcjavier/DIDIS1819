@@ -5,9 +5,11 @@
  */
 package practica_segundaIdea.carreras_gui;
 
-import java.util.List;
+ 
 import practica_segundaIdea.carreras_gui.tableModelParticipantes.ParticipantesTableModel;
-import practica_segundaIdea.dto.Participante;
+import practica_segundaIdea.dto.Carrera;
+import practica_segundaIdea.logica.LogicaCarrera;
+ 
 
  
 
@@ -18,21 +20,23 @@ import practica_segundaIdea.dto.Participante;
 public class ListaParticipantesCarrera extends javax.swing.JDialog {
 
      ParticipantesTableModel ptm;
-     List<Participante> lista;
-      
-      
+     LogicaCarrera lc=new LogicaCarrera();
+     int aux;
+     Carrera carrera;
       
     /**
      * Creates new form ParticipantesCarrera
      */
-    public ListaParticipantesCarrera(java.awt.Frame parent, boolean modal,List<Participante> lista) {
+    public ListaParticipantesCarrera(java.awt.Frame parent, boolean modal,Carrera c) {
         super(parent, modal);
-        initComponents();  
-        this.lista=lista;
+        initComponents();
+        this.carrera=c;
+         this.setTitle(c.getNomCarrera());
         rellenarTabalParicipantes();
     }
-    private void rellenarTabalParicipantes(){        
-         ptm=new ParticipantesTableModel(lista);
+    private void rellenarTabalParicipantes(){
+         aux=lc.getAux();
+         ptm=new ParticipantesTableModel(carrera.getListaDeParticipantes());
         jTableParticipantes.setModel(ptm);
         
     }

@@ -66,6 +66,7 @@ public class DatosCarrera extends javax.swing.JDialog {
         String lugar = jTextFieldLugarCarrera.getText();
         int max = (int) jSpinnerMaxParticipantes.getValue();
         Carrera carrera = new Carrera(nombre, fecha, lugar, max);
+        carrera.setListaDeParticipantes(null);
         return carrera;
     }
 

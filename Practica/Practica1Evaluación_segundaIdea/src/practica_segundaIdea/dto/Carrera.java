@@ -5,6 +5,7 @@
  */
 package practica_segundaIdea.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ public class Carrera {
     private String fecha;
     private String lugar;
     private int maxParticipantes;
-    private List<Corredor> listaDeCorredores;
+    private List<Participante> listaDeParticipantes;
 
     //Constructores
     public Carrera() {
@@ -29,6 +30,8 @@ public class Carrera {
         this.fecha = fecha;
         this.lugar = lugar;
         this.maxParticipantes = maxParticipantes;
+        listaDeParticipantes=new ArrayList<>();
+         
     }
 
     //Getters and Setters
@@ -64,12 +67,12 @@ public class Carrera {
         this.maxParticipantes = maxParticipantes;
     }
 
-    public List<Corredor> getListaDeCorredores() {
-        return listaDeCorredores;
+    public List<Participante> getListaDeParticipantes() {
+        return listaDeParticipantes;
     }
 
-    public void setListaDeCorredores(List<Corredor> listaDeCorredores) {
-        this.listaDeCorredores = listaDeCorredores;
+    public void setListaDeParticipantes(List<Participante> listaDeParticipantes) {
+        this.listaDeParticipantes = listaDeParticipantes;
     }
-
+ 
 }
