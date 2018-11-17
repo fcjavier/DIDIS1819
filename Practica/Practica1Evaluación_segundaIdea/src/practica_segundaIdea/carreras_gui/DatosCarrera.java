@@ -29,6 +29,7 @@ public class DatosCarrera extends javax.swing.JDialog {
     LogicaCarrera logicaCarrera = new LogicaCarrera();
     LogicaFicheros lf = new LogicaFicheros();
     CarreraTableModel ctm = new CarreraTableModel(logicaCarrera.getListaCarreras());
+    Carrera c;
 
     /**
      * Creates new form DatosCarrera
@@ -66,7 +67,6 @@ public class DatosCarrera extends javax.swing.JDialog {
         String lugar = jTextFieldLugarCarrera.getText();
         int max = (int) jSpinnerMaxParticipantes.getValue();
         Carrera carrera = new Carrera(nombre, fecha, lugar, max);
-        carrera.setListaDeParticipantes(null);
         return carrera;
     }
 
@@ -216,13 +216,20 @@ public class DatosCarrera extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRegistrarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarCarreraActionPerformed
-        if (logicaCarrera.agregarCarrera(crearCarrera())) {
-            lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logicaCarrera.getListaCarreras());
-            JOptionPane.showMessageDialog(this, "Carrera registrada", "CONFIRMACIÓN", JOptionPane.INFORMATION_MESSAGE);
-            masRegistros();
+          
+        c = crearCarrera();       
+        if (logicaCarrera.getListaCarreras().contains(c)) {
+            JOptionPane.showMessageDialog(this, "La carrera ya existe", "", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+            if (logicaCarrera.agregarCarrera(c)) {
+                lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logicaCarrera.getListaCarreras());
+                JOptionPane.showMessageDialog(this, "Carrera registrada", "CONFIRMACIÓN", JOptionPane.INFORMATION_MESSAGE);
+                masRegistros();
+            } else {
+                JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }             
+                }
+         
     }//GEN-LAST:event_jButtonRegistrarCarreraActionPerformed
 
 

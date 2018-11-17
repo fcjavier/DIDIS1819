@@ -28,10 +28,11 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
 
     LogicaCorredor lc = new LogicaCorredor();
     LogicaFicheros lf = new LogicaFicheros();
-    LogicaCarrera logicaCarrera=new LogicaCarrera();
+    LogicaCarrera logicaCarrera = new LogicaCarrera();
     PaginaPrincipal paginaPrincipal;
     CorredoresTableModel ctm;
     Carrera carrera;
+
     /**
      * Creates new form ListadoDeCorredores
      */
@@ -42,13 +43,14 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
         rellenarTablaCorredores();
     }
 
-    public ListadoDeCorredores(java.awt.Frame parent, boolean modal,Carrera c) {
+    public ListadoDeCorredores(java.awt.Frame parent, boolean modal, Carrera c) {
         super(parent, modal);
         paginaPrincipal = (PaginaPrincipal) parent;
         initComponents();
-        this.carrera=c;
+        this.carrera = c;
         rellenarTablaCorredores();
     }
+
     /**
      * Método que carga la cabecera y los datos en la tabla que muestra los
      * corredores.Dandole una ordenación por defecto y la posibilidad del cambio
@@ -215,15 +217,24 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonModificacionActionPerformed
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
-         
-        int opcion=jTableCorredores.convertRowIndexToModel(jTableCorredores.getSelectedRow());
-         Corredor c=lc.getListaCorredores().get(opcion);
-         Participante p=new Participante(c.getDni(), c.getNombre());
-         String dorsal=JOptionPane.showInputDialog(this, "ASIGNAR DORSAL", "DORSAL", JOptionPane.QUESTION_MESSAGE);
-         p.setDorsal(dorsal);
-         carrera.getListaDeParticipantes().add(p);
-          
-         
+      try{
+        int opcion = jTableCorredores.convertRowIndexToModel(jTableCorredores.getSelectedRow());
+        Corredor c = lc.getListaCorredores().get(opcion);
+        Participante p = new Participante(c.getDni(), c.getNombre());       
+        String dorsal = JOptionPane.showInputDialog(this, "ASIGNAR DORSAL", "DORSAL", JOptionPane.QUESTION_MESSAGE);
+            p.setDorsal(dorsal);
+            if(carrera.getListaDeParticipantes().size()<carrera.getMaxParticipantes()){
+        if (carrera.getListaDeParticipantes().contains(p)) {
+            JOptionPane.showMessageDialog(this, "El corredor ya existe", " ", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            carrera.getListaDeParticipantes().add(p);
+        }
+            }else{
+                JOptionPane.showMessageDialog(this, "Carrera completa", " ", JOptionPane.INFORMATION_MESSAGE);
+            }
+      }catch(Exception e){
+          JOptionPane.showMessageDialog(this, "No hay selección", "", JOptionPane.INFORMATION_MESSAGE);
+      }
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
 

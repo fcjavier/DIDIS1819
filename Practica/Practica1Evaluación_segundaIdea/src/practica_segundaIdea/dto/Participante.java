@@ -5,6 +5,8 @@
  */
 package practica_segundaIdea.dto;
 
+import java.util.Objects;
+
 /**
  *
  * @author USER
@@ -52,6 +54,31 @@ public class Participante {
 
     public void setTiempo(String tiempo) {
         this.tiempo = tiempo;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 11 * hash + Objects.hashCode(this.dni);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Participante other = (Participante) obj;
+        if (!Objects.equals(this.dni, other.dni)) {
+            return false;
+        }
+        return true;
     }
 
 }

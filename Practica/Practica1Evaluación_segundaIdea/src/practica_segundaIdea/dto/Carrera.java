@@ -7,6 +7,7 @@ package practica_segundaIdea.dto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -73,6 +74,39 @@ public class Carrera {
 
     public void setListaDeParticipantes(List<Participante> listaDeParticipantes) {
         this.listaDeParticipantes = listaDeParticipantes;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.nomCarrera);
+        hash = 23 * hash + Objects.hashCode(this.fecha);
+        hash = 23 * hash + Objects.hashCode(this.lugar);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Carrera other = (Carrera) obj;
+        if (!Objects.equals(this.nomCarrera, other.nomCarrera)) {
+            return false;
+        }
+        if (!Objects.equals(this.fecha, other.fecha)) {
+            return false;
+        }
+        if (!Objects.equals(this.lugar, other.lugar)) {
+            return false;
+        }
+        return true;
     }
  
 }
