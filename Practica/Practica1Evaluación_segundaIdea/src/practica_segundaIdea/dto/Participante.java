@@ -5,13 +5,14 @@
  */
 package practica_segundaIdea.dto;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author USER
  */
-public class Participante {
+public class Participante implements Serializable {
 
     //Atributos
     private String dni;

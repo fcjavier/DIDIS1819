@@ -5,6 +5,7 @@
  */
 package practica_segundaIdea.run;
 
+import java.io.File;
 import practica_segundaIdea.corredor_gui.*;
 import practica_segundaIdea.carreras_gui.*;
 import javax.swing.JOptionPane;
@@ -13,6 +14,7 @@ import practica_segundaIdea.dto.Corredor;
 import practica_segundaIdea.logica.LogicaCarrera;
 import practica_segundaIdea.logica.LogicaCorredor;
 import practica_segundaIdea.logica.LogicaFicheros;
+import practica_segundaIdea.logica.LogicaFicherosObjetos;
 
 /**
  *
@@ -23,19 +25,22 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     LogicaCorredor lc = new LogicaCorredor();
     LogicaCarrera logCarrera = new LogicaCarrera();
     LogicaFicheros lf=new LogicaFicheros();
+    LogicaFicherosObjetos lfo=new LogicaFicherosObjetos();
     Corredor c = new Corredor();
     Carrera carrera = new Carrera();
 
     /**
      * Creates new form PaginaPrincipal
      */
+     
     public PaginaPrincipal() {
         initComponents();
         cargarFichero();
     }
     public void cargarFichero(){
+        File fichero=new File("carreras.txt");
         lc.cargarListaCorredor(lf.abrirFicheroCSVLecturaCorredor("corredor.csv"));
-        logCarrera.cargarListaCarreras(lf.abrirFicheroCSVLecturaCarrera("carreras.csv"));
+        logCarrera.cargarListaCarreras(lfo.abrirFicheroObjetosLeer(fichero));
     }
     
     /**

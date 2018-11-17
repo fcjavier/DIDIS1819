@@ -5,11 +5,13 @@
  */
 package practica_segundaIdea.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author USER
  */
-public class Corredor {
+public class Corredor implements Serializable {
 
     //Atributos
     private String nombre;

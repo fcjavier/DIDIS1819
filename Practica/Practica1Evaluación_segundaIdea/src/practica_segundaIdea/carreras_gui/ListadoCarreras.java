@@ -16,6 +16,7 @@ import practica_segundaIdea.corredor_gui.ListadoDeCorredores;
 import practica_segundaIdea.dto.Carrera;
 import practica_segundaIdea.logica.LogicaCarrera;
 import practica_segundaIdea.logica.LogicaFicheros;
+import practica_segundaIdea.logica.LogicaFicherosObjetos;
 import practica_segundaIdea.run.PaginaPrincipal;
 
 /**
@@ -26,6 +27,7 @@ public class ListadoCarreras extends javax.swing.JDialog {
 
     LogicaCarrera logCarrera = new LogicaCarrera();
     LogicaFicheros lf = new LogicaFicheros();
+    LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
     PaginaPrincipal paginaPrincipal;
     CarreraTableModel ctm;
     int opcion = 0;
@@ -72,6 +74,7 @@ public class ListadoCarreras extends javax.swing.JDialog {
         jButtonModificar = new javax.swing.JButton();
         jButtonAgregarCorredor = new javax.swing.JButton();
         jButtonParticipantes = new javax.swing.JButton();
+        jButtonGuardarRegistros = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -123,6 +126,13 @@ public class ListadoCarreras extends javax.swing.JDialog {
             }
         });
 
+        jButtonGuardarRegistros.setText(org.openide.util.NbBundle.getMessage(ListadoCarreras.class, "ListadoCarreras.jButtonGuardarRegistros.text")); // NOI18N
+        jButtonGuardarRegistros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarRegistrosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -138,6 +148,10 @@ public class ListadoCarreras extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonParticipantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addComponent(jButtonGuardarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +164,9 @@ public class ListadoCarreras extends javax.swing.JDialog {
                     .addComponent(jButtonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAgregarCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonGuardarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -235,10 +251,17 @@ public class ListadoCarreras extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButtonParticipantesActionPerformed
 
+    private void jButtonGuardarRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarRegistrosActionPerformed
+       
+       lfo.abrirFicheroObjetosGrabar("carreras.txt", logCarrera.getListaCarreras());
+         
+    }//GEN-LAST:event_jButtonGuardarRegistrosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAgregarCorredor;
     private javax.swing.JButton jButtonBaja;
+    private javax.swing.JButton jButtonGuardarRegistros;
     private javax.swing.JButton jButtonModificar;
     private javax.swing.JButton jButtonNuevaAlta;
     private javax.swing.JButton jButtonParticipantes;
