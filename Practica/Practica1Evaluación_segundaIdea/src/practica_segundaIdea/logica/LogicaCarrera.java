@@ -67,12 +67,6 @@ public class LogicaCarrera {
     public boolean anularCarrera(Carrera c) {
         return listaCarreras.remove(c);
     }
-
-    public int getAux() {
-        return aux;
-    }
-
-    public void setAux(int aux) {
-        this.aux = aux;
-    } 
+ 
+   
 }

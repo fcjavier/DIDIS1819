@@ -5,13 +5,17 @@
  */
 package practica_segundaIdea.carreras_gui;
 
- 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.RowSorter.SortKey;
+import javax.swing.SortOrder;
+import javax.swing.table.TableRowSorter;
 import practica_segundaIdea.carreras_gui.tableModelParticipantes.ParticipantesTableModel;
 import practica_segundaIdea.dto.Carrera;
+import practica_segundaIdea.dto.Participante;
 import practica_segundaIdea.logica.LogicaCarrera;
- 
-
- 
+import practica_segundaIdea.logica.LogicaFicherosObjetos;
 
 /**
  *
@@ -19,27 +23,36 @@ import practica_segundaIdea.logica.LogicaCarrera;
  */
 public class ListaParticipantesCarrera extends javax.swing.JDialog {
 
-     ParticipantesTableModel ptm;
-     LogicaCarrera lc=new LogicaCarrera();
-     int aux;
-     Carrera carrera;
-      
+    ParticipantesTableModel ptm;
+    LogicaCarrera lc = new LogicaCarrera();
+    LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
+    Carrera carrera;
+    Participante p;
+
     /**
      * Creates new form ParticipantesCarrera
      */
-    public ListaParticipantesCarrera(java.awt.Frame parent, boolean modal,Carrera c) {
+    public ListaParticipantesCarrera(java.awt.Frame parent, boolean modal, Carrera c) {
         super(parent, modal);
         initComponents();
-        this.carrera=c;
-         this.setTitle(c.getNomCarrera());
+        this.carrera = c;
+        this.setTitle(c.getNomCarrera());
         rellenarTabalParicipantes();
     }
-    private void rellenarTabalParicipantes(){
-         aux=lc.getAux();
-         ptm=new ParticipantesTableModel(carrera.getListaDeParticipantes());
+
+    private void rellenarTabalParicipantes() {
+
+        ptm = new ParticipantesTableModel(carrera.getListaDeParticipantes());
         jTableParticipantes.setModel(ptm);
-        
+
+        TableRowSorter<ParticipantesTableModel> sorter = new TableRowSorter<>(ptm);
+        jTableParticipantes.setRowSorter(sorter);
+        List<SortKey> sortKeys = new ArrayList<>();
+        sortKeys.add(new SortKey(0, SortOrder.ASCENDING));
+        sorter.setSortKeys(sortKeys);
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,6 +65,7 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableParticipantes = new javax.swing.JTable();
+        jButtonEliminarParticipante = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -68,15 +82,30 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTableParticipantes);
 
+        jButtonEliminarParticipante.setText(org.openide.util.NbBundle.getMessage(ListaParticipantesCarrera.class, "ListaParticipantesCarrera.jButtonEliminarParticipante.text")); // NOI18N
+        jButtonEliminarParticipante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarParticipanteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonEliminarParticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEliminarParticipante, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -98,9 +127,23 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- 
+
+    private void jButtonEliminarParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarParticipanteActionPerformed
+
+        int posicion = jTableParticipantes.convertRowIndexToModel(jTableParticipantes.getSelectedRow());
+        if (carrera.getListaDeParticipantes().remove(carrera.getListaDeParticipantes().get(posicion))) {
+            JOptionPane.showMessageDialog(this, "Participane eliminado", "ELIMINAR PARTICIPANTE", JOptionPane.INFORMATION_MESSAGE);
+            ptm.fireTableDataChanged();
+            lfo.abrirFicheroObjetosGrabar("carreras.txt", lc.getListaCarreras());
+        } else {
+            JOptionPane.showMessageDialog(this, "No se ha podido eliminar", "", JOptionPane.INFORMATION_MESSAGE);
+        }
+        jTableParticipantes.clearSelection();
+    }//GEN-LAST:event_jButtonEliminarParticipanteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonEliminarParticipante;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableParticipantes;

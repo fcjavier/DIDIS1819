@@ -5,6 +5,7 @@
  */
 package practica_segundaIdea.logica;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -48,20 +49,21 @@ public class LogicaFicherosObjetos {
             try {
                 lee = new ObjectInputStream(new FileInputStream(fichero));
                 Carrera c = (Carrera) lee.readObject();
-                while(c!=null){
+                while (c != null) {
                     lista.add(c);
-                    c=(Carrera) lee.readObject();
+                    c = (Carrera) lee.readObject();
                 }
                 lee.close();
             } catch (FileNotFoundException ex) {
                 System.out.println("Fichero no encontrado.");
             } catch (ClassNotFoundException ex) {
-                 System.out.println("Clase no encontrada.");
+                System.out.println("Clase no encontrada");
+            } catch (EOFException e) {
             } catch (IOException ex) {
                 Exceptions.printStackTrace(ex);
             }
-        }else{
-            lista=null;
+        } else {
+            lista = null;
         }
         return lista;
     }

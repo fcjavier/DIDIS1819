@@ -32,8 +32,7 @@ public class Carrera implements Serializable{
         this.fecha = fecha;
         this.lugar = lugar;
         this.maxParticipantes = maxParticipantes;
-        listaDeParticipantes=new ArrayList<>();
-         
+        listaDeParticipantes=new ArrayList<>();      
     }
 
     //Getters and Setters

@@ -12,6 +12,7 @@ import javax.swing.RowSorter.SortKey;
 import javax.swing.SortOrder;
 import javax.swing.table.TableRowSorter;
 import practica_segundaIdea.carreras_gui.tableModelCarrera.CarreraTableModel;
+import practica_segundaIdea.corredor_gui.DatosCorredor;
 import practica_segundaIdea.corredor_gui.ListadoDeCorredores;
 import practica_segundaIdea.dto.Carrera;
 import practica_segundaIdea.logica.LogicaCarrera;
@@ -30,7 +31,6 @@ public class ListadoCarreras extends javax.swing.JDialog {
     LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
     PaginaPrincipal paginaPrincipal;
     CarreraTableModel ctm;
-    int opcion = 0;
     Carrera carrera;
 
     /**
@@ -40,6 +40,7 @@ public class ListadoCarreras extends javax.swing.JDialog {
         super(parent, modal);
         paginaPrincipal = (PaginaPrincipal) parent;
         initComponents();
+        this.setTitle("LISTADO DE CARRERAS");
         rellenarTableCarrera();
     }
 
@@ -233,22 +234,27 @@ public class ListadoCarreras extends javax.swing.JDialog {
                 carrera = logCarrera.getListaCarreras().get(opcion);
                 ListadoDeCorredores listadoDeCorredores = new ListadoDeCorredores(paginaPrincipal, true, carrera);
                 listadoDeCorredores.setVisible(true);
+            }else{
+                DatosCorredor datosCorredor=new DatosCorredor(paginaPrincipal, true);
+                datosCorredor.setVisible(true);
             }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No hay selección", "", JOptionPane.INFORMATION_MESSAGE);
         }
+        jTableListaCarreras.clearSelection();
     }//GEN-LAST:event_jButtonAgregarCorredorActionPerformed
 
     private void jButtonParticipantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonParticipantesActionPerformed
         try {
-            opcion = jTableListaCarreras.convertRowIndexToModel(jTableListaCarreras.getSelectedRow());
+            int opcion = jTableListaCarreras.convertRowIndexToModel(jTableListaCarreras.getSelectedRow());
             carrera = logCarrera.getListaCarreras().get(opcion);
             ListaParticipantesCarrera listaParticipantesCarrera = new ListaParticipantesCarrera(paginaPrincipal, true, carrera);
             listaParticipantesCarrera.setVisible(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No hay selección", "", JOptionPane.INFORMATION_MESSAGE);
         }
+        jTableListaCarreras.clearSelection();
     }//GEN-LAST:event_jButtonParticipantesActionPerformed
 
     private void jButtonGuardarRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarRegistrosActionPerformed

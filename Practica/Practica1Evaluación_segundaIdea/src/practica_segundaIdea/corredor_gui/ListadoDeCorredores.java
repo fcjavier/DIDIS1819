@@ -67,6 +67,7 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
         sortKeys.add(new SortKey(0, SortOrder.ASCENDING));
         sorter.setSortKeys(sortKeys);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -220,9 +221,10 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
       try{
         int opcion = jTableCorredores.convertRowIndexToModel(jTableCorredores.getSelectedRow());
         Corredor c = lc.getListaCorredores().get(opcion);
-        Participante p = new Participante(c.getDni(), c.getNombre());       
+        Participante p = new Participante(c.getDni(), c.getNombre());
+        
         String dorsal = JOptionPane.showInputDialog(this, "ASIGNAR DORSAL", "DORSAL", JOptionPane.QUESTION_MESSAGE);
-            p.setDorsal(dorsal);
+        p.setDorsal(dorsal);
             if(carrera.getListaDeParticipantes().size()<carrera.getMaxParticipantes()){
         if (carrera.getListaDeParticipantes().contains(p)) {
             JOptionPane.showMessageDialog(this, "El corredor ya existe", " ", JOptionPane.INFORMATION_MESSAGE);
@@ -235,6 +237,7 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
       }catch(Exception e){
           JOptionPane.showMessageDialog(this, "No hay selección", "", JOptionPane.INFORMATION_MESSAGE);
       }
+      jTableCorredores.clearSelection();
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
 
