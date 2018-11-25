@@ -17,7 +17,7 @@ import practica_segundaIdea.dto.Carrera;
 public class CarreraTableModel extends AbstractTableModel {
 
     private List<Carrera> listaCarreras = new ArrayList<>();
-    private String[] nomColumnas = {"Nombre", "Fecha", "Lugar", "Max Corredores"};
+    private String[] nomColumnas = {"Nombre", "Fecha", "Lugar", "Max Corredores","Iniciada"};
 
     public CarreraTableModel(List<Carrera> lista) {
         this.listaCarreras = lista;
@@ -44,6 +44,12 @@ public class CarreraTableModel extends AbstractTableModel {
                 return listaCarreras.get(fila).getLugar();
             case 3:
                 return listaCarreras.get(fila).getMaxParticipantes();
+            case 4:
+                if(listaCarreras.get(fila).isIniciada()){
+                    return "INICIADA";
+                }else{
+                    return "SIN INICIAR";
+                }          
         }
         return null;
     }
