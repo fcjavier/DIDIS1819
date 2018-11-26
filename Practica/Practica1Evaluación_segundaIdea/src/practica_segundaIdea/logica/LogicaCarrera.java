@@ -81,7 +81,7 @@ public class LogicaCarrera {
 
     public boolean agregarCarreraFinalizada(Carrera carrera) {
         boolean agregado = false;
-        if (!carrera.isIniciada()) {
+        if (carrera.isIniciada()) {
             agregado = listaCarrerasFinalizadas.add(carrera);
         }
         return agregado;
