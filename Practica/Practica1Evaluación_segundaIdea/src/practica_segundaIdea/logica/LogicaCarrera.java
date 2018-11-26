@@ -8,7 +8,6 @@ package practica_segundaIdea.logica;
 import java.util.ArrayList;
 import java.util.List;
 import practica_segundaIdea.dto.Carrera;
-import practica_segundaIdea.dto.Dorsales;
 
 /**
  *
@@ -17,8 +16,10 @@ import practica_segundaIdea.dto.Dorsales;
 public class LogicaCarrera {
 
     private static List<Carrera> listaCarreras = new ArrayList<Carrera>();
-    private static List<Dorsales> dorsalCarrera = new ArrayList<Dorsales>();
+    private static List<Carrera> listaCarrerasFinalizadas = new ArrayList<Carrera>();
+
     private int aux;
+
     /**
      * Método que agrega una carrera a la lista de carreras
      *
@@ -26,9 +27,9 @@ public class LogicaCarrera {
      * @return boolean
      */
     public boolean agregarCarrera(Carrera carrera) {
-        boolean agregado=false;
-        if(!carrera.isIniciada()){
-        agregado = listaCarreras.add(carrera);
+        boolean agregado = false;
+        if (!carrera.isIniciada()) {
+            agregado = listaCarreras.add(carrera);
         }
         return agregado;
     }
@@ -71,18 +72,19 @@ public class LogicaCarrera {
      * @return boolean.
      */
     public boolean anularCarrera(Carrera c) {
-        boolean anular =false;
-        if(!c.isIniciada()){
-        anular = listaCarreras.remove(c);
+        boolean anular = false;
+        if (!c.isIniciada()) {
+            anular = listaCarreras.remove(c);
         }
         return anular;
     }
-    public void agregarCarreraDorsal(Dorsales d){
-        dorsalCarrera.add(d);
+
+    public boolean agregarCarreraFinalizada(Carrera carrera) {
+        boolean agregado = false;
+        if (!carrera.isIniciada()) {
+            agregado = listaCarrerasFinalizadas.add(carrera);
+        }
+        return agregado;
     }
 
-    public List<Dorsales> getDorsalCarrera() {
-        return dorsalCarrera;
-    }
-    
 }

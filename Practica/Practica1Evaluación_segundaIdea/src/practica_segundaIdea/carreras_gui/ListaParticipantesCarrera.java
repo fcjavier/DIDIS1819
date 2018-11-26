@@ -129,25 +129,28 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(2, 2, 2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
                         .addComponent(jButtonEliminarParticipante)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonAsignarDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonSalirFiltrado)
-                            .addComponent(jButtonFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -155,12 +158,12 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
                             .addComponent(jButtonAsignarDorsal)
                             .addComponent(jButtonEliminarParticipante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextFieldFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
+                        .addContainerGap(22, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
                         .addComponent(jButtonFiltrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                        .addComponent(jButtonSalirFiltrado))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonSalirFiltrado)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,7 +173,7 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(89, 89, 89))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,15 +189,15 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
     private void jButtonEliminarParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarParticipanteActionPerformed
         try {
             int posicion = jTableParticipantes.convertRowIndexToModel(jTableParticipantes.getSelectedRow());
-            int confirmar=JOptionPane.showConfirmDialog(this, "CONFIRMAR BORRADO", "", JOptionPane.OK_CANCEL_OPTION);
-            if(confirmar==JOptionPane.OK_OPTION){
-            if (carrera.getListaDeParticipantes().remove(carrera.getListaDeParticipantes().get(posicion))) {
-                JOptionPane.showMessageDialog(this, "Participane eliminado", "ELIMINAR PARTICIPANTE", JOptionPane.INFORMATION_MESSAGE);               
-                lfo.abrirFicheroObjetosGrabar("carreras.txt", lc.getListaCarreras());
-                ptm.fireTableDataChanged();
-            } else {
-                JOptionPane.showMessageDialog(this, "No se ha podido eliminar", "", JOptionPane.INFORMATION_MESSAGE);
-            }
+            int confirmar = JOptionPane.showConfirmDialog(this, "CONFIRMAR BORRADO", "", JOptionPane.OK_CANCEL_OPTION);
+            if (confirmar == JOptionPane.OK_OPTION) {
+                if (carrera.getListaDeParticipantes().remove(carrera.getListaDeParticipantes().get(posicion))) {
+                    JOptionPane.showMessageDialog(this, "Participane eliminado", "ELIMINAR PARTICIPANTE", JOptionPane.INFORMATION_MESSAGE);
+                    lfo.abrirFicheroObjetosGrabar("carreras.txt", lc.getListaCarreras());
+                    ptm.fireTableDataChanged();
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se ha podido eliminar", "", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
             jTableParticipantes.clearSelection();
         } catch (Exception e) {
@@ -206,27 +209,28 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
         try {
             int seleccion = jTableParticipantes.convertRowIndexToModel(jTableParticipantes.getSelectedRow());
             p = carrera.getListaDeParticipantes().get(seleccion);
-            String dorsal = JOptionPane.showInputDialog(this, "ASIGNAR DORSAL(000-999)", "DORSAL", JOptionPane.QUESTION_MESSAGE);            
-                p.setDorsal(dorsal);               
-                lfo.abrirFicheroObjetosGrabar("carreras.txt", lc.getListaCarreras());
-                ptm.fireTableDataChanged();      
+            String dorsal = JOptionPane.showInputDialog(this, "ASIGNAR DORSAL(000-999)", "DORSAL", JOptionPane.QUESTION_MESSAGE);
+            p.setDorsal(dorsal);
+            lfo.abrirFicheroObjetosGrabar("carreras.txt", lc.getListaCarreras());
+            ptm.fireTableDataChanged();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No hay selección", "", JOptionPane.INFORMATION_MESSAGE);
         }
         jTableParticipantes.clearSelection();
+
     }//GEN-LAST:event_jButtonAsignarDorsalActionPerformed
 
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
-         RowFilter<ParticipantesTableModel,Integer> rf=RowFilter.regexFilter(jTextFieldFiltro.getText(), 1);
-         sorter.setRowFilter(rf);
-         jTextFieldFiltro.setText("");
+        RowFilter<ParticipantesTableModel, Integer> rf = RowFilter.regexFilter(jTextFieldFiltro.getText(), 1);
+        sorter.setRowFilter(rf);
+        jTextFieldFiltro.setText("");
     }//GEN-LAST:event_jButtonFiltrarActionPerformed
 
     private void jButtonSalirFiltradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirFiltradoActionPerformed
-         rellenarTabalParicipantes();
-         jTextFieldFiltro.setText("");
+        rellenarTabalParicipantes();
+        jTextFieldFiltro.setText("");
     }//GEN-LAST:event_jButtonSalirFiltradoActionPerformed
-  
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAsignarDorsal;

@@ -42,6 +42,7 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
     public ListadoDeCorredores(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         paginaPrincipal = (PaginaPrincipal) parent;
+        this.setTitle("LISTADO DE CORREDORES");
         initComponents();
         rellenarTablaCorredores();
     }

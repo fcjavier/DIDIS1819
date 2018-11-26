@@ -23,7 +23,6 @@ public class Carrera implements Serializable{
     private int maxParticipantes;
     private List<Participante> listaDeParticipantes;
     private boolean iniciada;
-
     //Constructores
     public Carrera() {
     }

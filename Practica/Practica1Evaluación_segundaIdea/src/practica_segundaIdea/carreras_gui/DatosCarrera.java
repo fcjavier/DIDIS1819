@@ -6,7 +6,9 @@
 package practica_segundaIdea.carreras_gui;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -30,6 +32,8 @@ public class DatosCarrera extends javax.swing.JDialog {
     LogicaFicheros lf = new LogicaFicheros();
     CarreraTableModel ctm = new CarreraTableModel(logicaCarrera.getListaCarreras());
     Carrera c;
+    List<String>dorsales=new ArrayList<String>();
+     
 
     /**
      * Creates new form DatosCarrera
