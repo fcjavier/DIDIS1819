@@ -58,6 +58,7 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
     public void anularBoton() {
         if (carrera.isIniciada()) {
             jButtonEliminarParticipante.setEnabled(false);
+            jButtonAsignarDorsal.setEnabled(false);
         }
     }
 

@@ -78,8 +78,12 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jButtonGuardarRegistros" min="-2" pref="178" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jButtonGuardarRegistros" min="-2" pref="178" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jButtonCarrerasFinalizadas" min="-2" pref="188" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jButtonCrearCarrera" min="-2" pref="99" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -139,7 +143,10 @@
                   <EmptySpace pref="31" max="32767" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jButtonGuardarRegistros" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButtonGuardarRegistros" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                      <Component id="jButtonCarrerasFinalizadas" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -275,6 +282,14 @@
               <SerializedValue value="-84,-19,0,5,115,114,0,18,116,105,109,101,114,115,97,118,101,100,97,116,97,46,83,97,118,101,57,-65,46,114,59,85,43,-69,2,0,2,90,0,6,97,99,116,105,118,111,73,0,6,116,105,101,109,112,111,120,112,1,0,0,0,15"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonCarrerasFinalizadas">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CARRERAS  FINALIZADAS"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCarrerasFinalizadasActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

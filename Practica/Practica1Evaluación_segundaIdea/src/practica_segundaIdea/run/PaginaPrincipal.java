@@ -43,14 +43,17 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             public void guardarDatos() {
              lf.abrirFicheroCSVEscrituraCorredor("corredor.csv", lc.getListaCorredores());
              lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logCarrera.getListaCarreras());
-             lfo.abrirFicheroObjetosGrabar("carreras.txt", logCarrera.getListaCarreras());              
+             lfo.abrirFicheroObjetosGrabar("carreras.txt", logCarrera.getListaCarreras());
+             lfo.abrirFicheroObjetosGrabar("carrerasFinalizadas.txt", logCarrera.getListaCarrerasFinalizadas());
             }
         });
     }
     public void cargarFichero(){
         File fichero=new File("carreras.txt");
+        File finales=new File("carrerasFinalizadas.txt");
         lc.cargarListaCorredor(lf.abrirFicheroCSVLecturaCorredor("corredor.csv"));
         logCarrera.cargarListaCarreras(lfo.abrirFicheroObjetosLeer(fichero));
+        logCarrera.cargarListaCarrerasFinalizadas(lfo.abrirFicheroObjetosLeer(finales));
     }
     
     
@@ -79,6 +82,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButtonGuardarRegistros = new javax.swing.JButton();
         timerData = new timersavedata.TimerData();
+        jButtonCarrerasFinalizadas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -177,6 +181,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         timerData.setForeground(new java.awt.Color(0, 255, 0));
         timerData.setSalvar(new timersavedata.Save(0,false));
 
+        jButtonCarrerasFinalizadas.setText("CARRERAS  FINALIZADAS");
+        jButtonCarrerasFinalizadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCarrerasFinalizadasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -199,8 +210,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addContainerGap()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButtonGuardarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jButtonGuardarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonCarrerasFinalizadas, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jButtonCrearCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
@@ -250,7 +264,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(22, 22, 22)
-                .addComponent(jButtonGuardarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonGuardarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCarrerasFinalizadas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50))
         );
 
@@ -415,6 +431,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_jButtonGuardarRegistrosActionPerformed
 
+    private void jButtonCarrerasFinalizadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCarrerasFinalizadasActionPerformed
+         ListadoCarrerasTerminadas listadoCarrerasTerminadas=new ListadoCarrerasTerminadas(this, true);
+         listadoCarrerasTerminadas.setVisible(true);
+    }//GEN-LAST:event_jButtonCarrerasFinalizadasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -455,6 +476,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAltaCorredor;
     private javax.swing.JButton jButtonAnularCarrera;
     private javax.swing.JButton jButtonBajaCorredor;
+    private javax.swing.JButton jButtonCarrerasFinalizadas;
     private javax.swing.JButton jButtonConsultarCarrera;
     private javax.swing.JButton jButtonConsultarCorredor;
     private javax.swing.JButton jButtonCrearCarrera;

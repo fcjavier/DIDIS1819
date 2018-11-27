@@ -339,13 +339,14 @@ public class CarreraEnCurso extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonAsignarTiempoActionPerformed
 
     private void jButtonFinalCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalCarreraActionPerformed
-          boolean agregada=logCarrera.agregarCarreraFinalizada(carrera);
+    
+        boolean agregada=logCarrera.agregarCarreraFinalizada(carrera);
           if(agregada){
-              boolean eliminada=logCarrera.getListaCarreras().remove(carrera);
-              carrera.setIniciada(false);
+              boolean eliminada=logCarrera.getListaCarreras().remove(carrera);               
               if(eliminada){
                   lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logCarrera.getListaCarreras());
-                  lfo.abrirFicheroObjetosGrabar("carreras.txt", logCarrera.getListaCarreras());                
+                  lfo.abrirFicheroObjetosGrabar("carreras.txt", logCarrera.getListaCarreras());
+                  lfo.abrirFicheroObjetosGrabar("carrerasFinalizadas.txt", logCarrera.getListaCarrerasFinalizadas());
               JOptionPane.showMessageDialog(CarreraEnCurso.this, "CARRERA AGREGADA EN\nCARRERAS FINALIZADAS",
                       "CAMBIO DE LISTADO", JOptionPane.INFORMATION_MESSAGE);
               }              

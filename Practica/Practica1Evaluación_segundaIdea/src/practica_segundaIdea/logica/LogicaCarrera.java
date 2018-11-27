@@ -47,6 +47,15 @@ public class LogicaCarrera {
         listaCarreras = carreras;
     }
 
+    public List<Carrera> getListaCarrerasFinalizadas() {
+        return listaCarrerasFinalizadas;
+    }
+
+    public void cargarListaCarrerasFinalizadas(List<Carrera> listaCarrerasFinalizadas) {
+         this.listaCarrerasFinalizadas = listaCarrerasFinalizadas;
+    }
+
+    
     /**
      * Método que busca una carrera en la lista por su nombre recibe un
      * parámetro tipo String con el nombre de la carrera.
