@@ -5,7 +5,10 @@
  */
 package practica_segundaIdea.run;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
+import javax.swing.JFrame;
 import practica_segundaIdea.corredor_gui.*;
 import practica_segundaIdea.carreras_gui.*;
 import javax.swing.JOptionPane;
@@ -25,38 +28,64 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     LogicaCorredor lc = new LogicaCorredor();
     LogicaCarrera logCarrera = new LogicaCarrera();
-    LogicaFicheros lf=new LogicaFicheros();
-    LogicaFicherosObjetos lfo=new LogicaFicherosObjetos();
+    LogicaFicheros lf = new LogicaFicheros();
+    LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
     Corredor c = new Corredor();
     Carrera carrera = new Carrera();
 
     /**
      * Creates new form PaginaPrincipal
      */
-     
     public PaginaPrincipal() {
         initComponents();
+         
         this.setLocationRelativeTo(null);
         cargarFichero();
+         cerrar();
         timerData.addSaveListener(new SaveListener() {
             @Override
             public void guardarDatos() {
-             lf.abrirFicheroCSVEscrituraCorredor("corredor.csv", lc.getListaCorredores());
-             lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logCarrera.getListaCarreras());
-             lfo.abrirFicheroObjetosGrabar("carreras.txt", logCarrera.getListaCarreras());
-             lfo.abrirFicheroObjetosGrabar("carrerasFinalizadas.txt", logCarrera.getListaCarrerasFinalizadas());
+                 guardar();
             }
         });
     }
-    public void cargarFichero(){
-        File fichero=new File("carreras.txt");
-        File finales=new File("carrerasFinalizadas.txt");
+
+    public void cargarFichero() {
+        File fichero = new File("carreras.txt");
+        File finales = new File("carrerasFinalizadas.txt");
         lc.cargarListaCorredor(lf.abrirFicheroCSVLecturaCorredor("corredor.csv"));
         logCarrera.cargarListaCarreras(lfo.abrirFicheroObjetosLeer(fichero));
         logCarrera.cargarListaCarrerasFinalizadas(lfo.abrirFicheroObjetosLeer(finales));
     }
+
+    public void guardar() {
+        lf.abrirFicheroCSVEscrituraCorredor("corredor.csv", lc.getListaCorredores());
+        lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logCarrera.getListaCarreras());
+        lfo.abrirFicheroObjetosGrabar("carreras.txt", logCarrera.getListaCarreras());
+        lfo.abrirFicheroObjetosGrabar("carrerasFinalizadas.txt", logCarrera.getListaCarrerasFinalizadas());
+    }
+    public void cerrar(){
+        try{
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            addWindowListener(new WindowAdapter() {
+                public void windowClosing(WindowEvent event){
+                    confirmarSalida();
+                }
+          });
+            this.setVisible(true);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     
-    
+    public void confirmarSalida(){
+        int opcion=JOptionPane.showConfirmDialog(this, "GUARDAR DATOS ANTES DE SALIR", "CONFIRMACIÓN", JOptionPane.YES_NO_OPTION);
+        if(opcion==JOptionPane.YES_OPTION){
+            guardar();
+            JOptionPane.showMessageDialog(this, "SE HAN GUARDADO");
+            System.exit(0);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -422,18 +451,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonModificarCarreraActionPerformed
 
     private void jButtonGuardarRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarRegistrosActionPerformed
-       boolean respuestaCorredor= lf.abrirFicheroCSVEscrituraCorredor("corredor.csv", lc.getListaCorredores());
-       boolean respuestaCarrera=lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logCarrera.getListaCarreras());
-       if(respuestaCorredor && respuestaCarrera){
-           JOptionPane.showMessageDialog(this, "GUARDADO", "", JOptionPane.INFORMATION_MESSAGE);
-       }else{
-           JOptionPane.showMessageDialog(this, "ERROR AL GUARDAR", "", JOptionPane.INFORMATION_MESSAGE);
-       }
+        boolean respuestaCorredor = lf.abrirFicheroCSVEscrituraCorredor("corredor.csv", lc.getListaCorredores());
+        boolean respuestaCarrera = lf.abrirFicheroCSVEscrituraCarrera("carreras.csv", logCarrera.getListaCarreras());
+        if (respuestaCorredor && respuestaCarrera) {
+            JOptionPane.showMessageDialog(this, "GUARDADO", "", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "ERROR AL GUARDAR", "", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonGuardarRegistrosActionPerformed
 
     private void jButtonCarrerasFinalizadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCarrerasFinalizadasActionPerformed
-         ListadoCarrerasTerminadas listadoCarrerasTerminadas=new ListadoCarrerasTerminadas(this, true);
-         listadoCarrerasTerminadas.setVisible(true);
+        ListadoCarrerasTerminadas listadoCarrerasTerminadas = new ListadoCarrerasTerminadas(this, true);
+        listadoCarrerasTerminadas.setVisible(true);
     }//GEN-LAST:event_jButtonCarrerasFinalizadasActionPerformed
 
     /**
