@@ -8,6 +8,7 @@ package practica_segundaIdea.logica;
 import java.util.ArrayList;
 import java.util.List;
 import practica_segundaIdea.dto.Carrera;
+import practica_segundaIdea.dto.Llegadas;
 
 /**
  *
@@ -17,7 +18,7 @@ public class LogicaCarrera {
 
     private static List<Carrera> listaCarreras = new ArrayList<Carrera>();
     private static List<Carrera> listaCarrerasFinalizadas = new ArrayList<Carrera>();
-
+    private static List<Llegadas> listaLlegadas = new ArrayList<Llegadas>();
     private int aux;
 
     /**
@@ -96,4 +97,19 @@ public class LogicaCarrera {
         return agregado;
     }
 
+    public List<Llegadas> getListaLlegadas() {
+        return listaLlegadas;
+    }
+
+    public void setListaLlegadas(List<Llegadas> listaLlegadas) {
+        LogicaCarrera.listaLlegadas = listaLlegadas;
+    }
+    
+    public boolean agregarLlegada(Llegadas llegada){        
+        if(listaLlegadas.add(llegada)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

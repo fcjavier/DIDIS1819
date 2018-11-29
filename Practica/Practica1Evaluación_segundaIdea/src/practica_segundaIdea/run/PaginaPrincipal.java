@@ -84,6 +84,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             guardar();
             JOptionPane.showMessageDialog(this, "SE HAN GUARDADO");
             System.exit(0);
+        }else{
+            System.exit(0);
         }
     }
     /**

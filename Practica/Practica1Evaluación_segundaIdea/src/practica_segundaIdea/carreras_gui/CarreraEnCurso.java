@@ -13,6 +13,7 @@ import javax.swing.SortOrder;
 import javax.swing.table.TableRowSorter;
 import practica_segundaIdea.carreras_gui.tableModelParticipantes.ParticipantesTableModel;
 import practica_segundaIdea.dto.Carrera;
+import practica_segundaIdea.dto.Llegadas;
 import practica_segundaIdea.dto.Participante;
 import practica_segundaIdea.logica.LogicaCarrera;
 import practica_segundaIdea.logica.LogicaFicheros;
@@ -32,6 +33,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
     LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
     LogicaFicheros lf = new LogicaFicheros();
     private String tiempoTomado;
+   
 
     /**
      * Creates new form CarreraEnCurso
@@ -39,7 +41,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
     public CarreraEnCurso(java.awt.Frame parent, boolean modal, Carrera carrera) {
         super(parent, modal);
         initComponents();
-        this.setTitle("CARRERA  EN  CURSO");
+        this.setTitle("CARRERA  EN  CURSO :  "+carrera.getNomCarrera().toUpperCase());
         this.carrera = carrera;
         rellenarTabalParicipantes();
     }
@@ -75,6 +77,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         jButtonFinalCarrera = new javax.swing.JButton();
         cronometro = new jcronometro.Cronometro();
         timerData1 = new timersavedata.TimerData();
+        jButtonFinDeCarrera = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -141,6 +144,14 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         timerData1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         timerData1.setFormato24h(true);
 
+        jButtonFinDeCarrera.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonFinDeCarrera.setText(org.openide.util.NbBundle.getMessage(CarreraEnCurso.class, "CarreraEnCurso.jButtonFinDeCarrera.text")); // NOI18N
+        jButtonFinDeCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFinDeCarreraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -161,8 +172,9 @@ public class CarreraEnCurso extends javax.swing.JDialog {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButtonReiniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabelTiempoTomado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonFinalCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
-                                .addGap(0, 10, Short.MAX_VALUE))))
+                                    .addComponent(jButtonFinalCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                    .addComponent(jButtonFinDeCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 20, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addComponent(timerData1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,9 +196,10 @@ public class CarreraEnCurso extends javax.swing.JDialog {
                 .addComponent(jButtonReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelTiempoTomado, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonFinalCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonFinDeCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -258,9 +271,19 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_cronometroMouseClicked
 
+    private void jButtonFinDeCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinDeCarreraActionPerformed
+          for(Participante p: carrera.getListaDeParticipantes()){
+             logCarrera.agregarLlegada(new Llegadas(p.getDorsal(),p.getTiempo(), p.getNombre()));
+          }
+          String nomFichero=carrera.getNomCarrera()+".csv";
+          lf.abrirFicheroCSVEscrituraLlegadas(carrera.getNomCarrera(),carrera.getFecha(),nomFichero,logCarrera.getListaLlegadas());
+          
+    }//GEN-LAST:event_jButtonFinDeCarreraActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private jcronometro.Cronometro cronometro;
+    private javax.swing.JButton jButtonFinDeCarrera;
     private javax.swing.JButton jButtonFinalCarrera;
     private javax.swing.JButton jButtonIniciar;
     private javax.swing.JButton jButtonParar;

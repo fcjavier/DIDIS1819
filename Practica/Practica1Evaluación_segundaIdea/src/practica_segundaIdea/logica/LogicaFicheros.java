@@ -17,6 +17,7 @@ import java.util.StringTokenizer;
 import org.openide.util.Exceptions;
 import practica_segundaIdea.dto.Carrera;
 import practica_segundaIdea.dto.Corredor;
+import practica_segundaIdea.dto.Llegadas;
 
 /**
  *
@@ -74,7 +75,7 @@ public class LogicaFicheros {
             for (Carrera c : carreras) {
                 try {
                     escribe.write(c.getNomCarrera() + "," + c.getFecha() + "," + c.getLugar() + ","
-                            + c.getMaxParticipantes() + "," + "\r\n");
+                            + c.getMaxParticipantes() + "\r\n");
                 } catch (IOException ex) {
                     Exceptions.printStackTrace(ex);
                 }
@@ -182,4 +183,26 @@ public class LogicaFicheros {
         return c;
     }
 
+        public boolean abrirFicheroCSVEscrituraLlegadas(String nomCarrera,String fecha,String fichero, List<Llegadas> llegadas) {
+        boolean correcto = true;
+        FileWriter fw = null;
+        try {
+            BufferedWriter escribe = new BufferedWriter(new FileWriter(fichero));
+            escribe.write(nomCarrera+","+"\r\n");
+            escribe.write(fecha+","+"\r\n");
+            for (Llegadas llegada : llegadas) {
+                try {
+                    escribe.write(llegada.getDorsal() + "," + llegada.getTiempo() + ","
+                            + llegada.getNomCorredor() + "\r\n");
+                } catch (IOException ex) {
+                    Exceptions.printStackTrace(ex);
+                }
+            }
+            escribe.close();
+        } catch (IOException ex) {
+            Exceptions.printStackTrace(ex);
+            correcto = false;
+        }
+        return correcto;
+    }
 }
