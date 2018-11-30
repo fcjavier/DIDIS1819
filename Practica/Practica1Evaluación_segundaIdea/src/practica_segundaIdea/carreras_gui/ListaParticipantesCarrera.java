@@ -5,6 +5,7 @@
  */
 package practica_segundaIdea.carreras_gui;
 
+import java.awt.HeadlessException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -33,6 +34,9 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
 
     /**
      * Creates new form ParticipantesCarrera
+     * @param parent
+     * @param modal
+     * @param c
      */
     public ListaParticipantesCarrera(java.awt.Frame parent, boolean modal, Carrera c) {
         super(parent, modal);
@@ -55,7 +59,7 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
 
     }
 
-    public void anularBoton() {
+    public final void anularBoton() {
         if (carrera.isIniciada()) {
             jButtonEliminarParticipante.setEnabled(false);
             jButtonAsignarDorsal.setEnabled(false);
@@ -201,7 +205,7 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
                 }
             }
             jTableParticipantes.clearSelection();
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(this, "No hay selección", "", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonEliminarParticipanteActionPerformed
@@ -214,7 +218,7 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
             p.setDorsal(dorsal);
             lfo.abrirFicheroObjetosGrabar("carreras.txt", lc.getListaCarreras());
             ptm.fireTableDataChanged();
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(this, "No hay selección", "", JOptionPane.INFORMATION_MESSAGE);
         }
         jTableParticipantes.clearSelection();

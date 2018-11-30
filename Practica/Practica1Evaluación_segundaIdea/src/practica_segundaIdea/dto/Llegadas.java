@@ -12,12 +12,13 @@ import java.util.Objects;
  *
  * @author USER
  */
-public class Llegadas implements Serializable, Comparable<Llegadas>{
+public class Llegadas implements Serializable{
     //Atributos      
     private String dorsal;
     private String tiempo;
     private String nomCorredor;
-
+     
+    
     public Llegadas() {
     }
 
@@ -25,6 +26,7 @@ public class Llegadas implements Serializable, Comparable<Llegadas>{
         this.dorsal = dorsal;
         this.tiempo = tiempo;
         this.nomCorredor = nomCorredor;
+      
     }
 
     public String getDorsal() {
@@ -50,11 +52,8 @@ public class Llegadas implements Serializable, Comparable<Llegadas>{
     public void setNomCorredor(String nomCorredor) {
         this.nomCorredor = nomCorredor;
     }
-
-    public int compareTo(Llegadas llegada) {
-        return tiempo.compareTo(llegada.getTiempo());
-    }
-  
+ 
+ 
     @Override
     public int hashCode() {
         int hash = 5;

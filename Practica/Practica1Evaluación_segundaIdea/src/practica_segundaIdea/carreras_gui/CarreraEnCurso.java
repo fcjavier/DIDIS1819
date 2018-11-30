@@ -6,7 +6,6 @@
 package practica_segundaIdea.carreras_gui;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.RowSorter;
@@ -53,7 +52,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         sorter = new TableRowSorter<>(ptm);
         jTableCarreraEnCurso.setRowSorter(sorter);
         List<RowSorter.SortKey> sortKeys = new ArrayList<>();
-        sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
+        sortKeys.add(new RowSorter.SortKey(3, SortOrder.ASCENDING));
         sorter.setSortKeys(sortKeys);
 
     }
@@ -272,10 +271,9 @@ public class CarreraEnCurso extends javax.swing.JDialog {
     }//GEN-LAST:event_cronometroMouseClicked
 
     private void jButtonGuardarInformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarInformeActionPerformed
-        for (Participante p : carrera.getListaDeParticipantes()) {
+        for (Participante p : carrera.getListaDeParticipantes()) {            
             logCarrera.agregarLlegada(new Llegadas(p.getDorsal(), p.getTiempo(), p.getNombre()));
-        }
-        Collections.sort(logCarrera.getListaLlegadas());
+        }         
         String nomFichero = carrera.getNomCarrera() + ".csv";
         lf.abrirFicheroCSVEscrituraLlegadas(carrera.getNomCarrera(), carrera.getFecha(), nomFichero, logCarrera.getListaLlegadas());
 
