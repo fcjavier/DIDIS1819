@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.TableRowSorter;
-import practica_segundaIdea.carreras_gui.tableModelCarrera.CarreraTableModel;
 import practica_segundaIdea.carreras_gui.tableModelCarreraFinalizada.CarreraTableModelFinalizada;
 import practica_segundaIdea.dto.Carrera;
 import practica_segundaIdea.logica.LogicaCarrera;
@@ -31,7 +30,8 @@ public class ListadoCarrerasTerminadas extends javax.swing.JDialog {
     TableRowSorter<CarreraTableModelFinalizada> sorter;
     PaginaPrincipal paginaPrincipal;
     CarreraTableModelFinalizada ctmf;
-    Carrera carrera;
+    Carrera carrera=null;
+
     /**
      * Creates new form ListadoCarrerasTerminadas
      */
@@ -51,6 +51,7 @@ public class ListadoCarrerasTerminadas extends javax.swing.JDialog {
         sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
         sorter.setSortKeys(sortKeys);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,7 +64,8 @@ public class ListadoCarrerasTerminadas extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableListadoCarrerasTerminadas = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jButtonVerParticipantes = new javax.swing.JButton();
+        jButtonInformeCarreras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -80,10 +82,17 @@ public class ListadoCarrerasTerminadas extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTableListadoCarrerasTerminadas);
 
-        jButton1.setText(org.openide.util.NbBundle.getMessage(ListadoCarrerasTerminadas.class, "ListadoCarrerasTerminadas.jButton1.text")); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVerParticipantes.setText(org.openide.util.NbBundle.getMessage(ListadoCarrerasTerminadas.class, "ListadoCarrerasTerminadas.jButtonVerParticipantes.text")); // NOI18N
+        jButtonVerParticipantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonVerParticipantesActionPerformed(evt);
+            }
+        });
+
+        jButtonInformeCarreras.setText(org.openide.util.NbBundle.getMessage(ListadoCarrerasTerminadas.class, "ListadoCarrerasTerminadas.jButtonInformeCarreras.text")); // NOI18N
+        jButtonInformeCarreras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInformeCarrerasActionPerformed(evt);
             }
         });
 
@@ -93,15 +102,18 @@ public class ListadoCarrerasTerminadas extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jButtonVerParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonInformeCarreras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonInformeCarreras, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(jButtonVerParticipantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,21 +136,36 @@ public class ListadoCarrerasTerminadas extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         try {
-            int opcion = jTableListadoCarrerasTerminadas.convertRowIndexToModel(jTableListadoCarrerasTerminadas.getSelectedRow());
+    private void jButtonVerParticipantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerParticipantesActionPerformed
+        try {
+            int opcion = jTableListadoCarrerasTerminadas.convertRowIndexToModel(jTableListadoCarrerasTerminadas.getSelectedRow());            
             carrera = logCarrera.getListaCarrerasFinalizadas().get(opcion);
+            System.out.println(carrera.getNomCarrera().toString());
             ListaParticipantesCarrera listaParticipantesCarrera = new ListaParticipantesCarrera(paginaPrincipal, true, carrera);
             listaParticipantesCarrera.setVisible(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No hay selección", "", JOptionPane.INFORMATION_MESSAGE);
         }
         jTableListadoCarrerasTerminadas.clearSelection();
-    }//GEN-LAST:event_jButton1ActionPerformed
- 
+    }//GEN-LAST:event_jButtonVerParticipantesActionPerformed
+
+    private void jButtonInformeCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInformeCarrerasActionPerformed
+        try {
+            int opcion = jTableListadoCarrerasTerminadas.convertRowIndexToModel(jTableListadoCarrerasTerminadas.getSelectedRow());
+            carrera = logCarrera.getListaCarrerasFinalizadas().get(opcion);
+            InformeCarrera informeCarrera = new InformeCarrera(paginaPrincipal, true,carrera);
+            informeCarrera.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No hay selección", "", JOptionPane.INFORMATION_MESSAGE);
+        }
+        jTableListadoCarrerasTerminadas.clearSelection();
+
+    }//GEN-LAST:event_jButtonInformeCarrerasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonInformeCarreras;
+    private javax.swing.JButton jButtonVerParticipantes;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableListadoCarrerasTerminadas;

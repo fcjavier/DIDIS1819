@@ -188,8 +188,8 @@ public class LogicaFicheros {
         FileWriter fw = null;
         try {
             BufferedWriter escribe = new BufferedWriter(new FileWriter(fichero));
-            escribe.write(nomCarrera+","+"\r\n");
-            escribe.write(fecha+","+"\r\n");
+            escribe.write(nomCarrera+"\r\n");
+            escribe.write(fecha+"\r\n");
             for (Llegadas llegada : llegadas) {
                 try {
                     escribe.write(llegada.getDorsal() + "," + llegada.getTiempo() + ","

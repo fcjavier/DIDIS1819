@@ -6,12 +6,13 @@
 package practica_segundaIdea.dto;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
  * @author USER
  */
-public class Llegadas implements Serializable{
+public class Llegadas implements Serializable, Comparable<Llegadas>{
     //Atributos      
     private String dorsal;
     private String tiempo;
@@ -49,5 +50,35 @@ public class Llegadas implements Serializable{
     public void setNomCorredor(String nomCorredor) {
         this.nomCorredor = nomCorredor;
     }
+
+    public int compareTo(Llegadas llegada) {
+        return tiempo.compareTo(llegada.getTiempo());
+    }
+  
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + Objects.hashCode(this.tiempo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Llegadas other = (Llegadas) obj;
+        if (!Objects.equals(this.tiempo, other.tiempo)) {
+            return false;
+        }
+        return true;
+    }
  
+    
 }

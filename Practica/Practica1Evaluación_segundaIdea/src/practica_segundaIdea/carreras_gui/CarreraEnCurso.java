@@ -6,6 +6,7 @@
 package practica_segundaIdea.carreras_gui;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.RowSorter;
@@ -33,7 +34,6 @@ public class CarreraEnCurso extends javax.swing.JDialog {
     LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
     LogicaFicheros lf = new LogicaFicheros();
     private String tiempoTomado;
-   
 
     /**
      * Creates new form CarreraEnCurso
@@ -41,7 +41,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
     public CarreraEnCurso(java.awt.Frame parent, boolean modal, Carrera carrera) {
         super(parent, modal);
         initComponents();
-        this.setTitle("CARRERA  EN  CURSO :  "+carrera.getNomCarrera().toUpperCase());
+        this.setTitle("CARRERA  EN  CURSO :  " + carrera.getNomCarrera().toUpperCase());
         this.carrera = carrera;
         rellenarTabalParicipantes();
     }
@@ -77,7 +77,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         jButtonFinalCarrera = new javax.swing.JButton();
         cronometro = new jcronometro.Cronometro();
         timerData1 = new timersavedata.TimerData();
-        jButtonFinDeCarrera = new javax.swing.JButton();
+        jButtonGuardarInforme = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -144,11 +144,11 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         timerData1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         timerData1.setFormato24h(true);
 
-        jButtonFinDeCarrera.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonFinDeCarrera.setText(org.openide.util.NbBundle.getMessage(CarreraEnCurso.class, "CarreraEnCurso.jButtonFinDeCarrera.text")); // NOI18N
-        jButtonFinDeCarrera.addActionListener(new java.awt.event.ActionListener() {
+        jButtonGuardarInforme.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonGuardarInforme.setText(org.openide.util.NbBundle.getMessage(CarreraEnCurso.class, "CarreraEnCurso.jButtonGuardarInforme.text")); // NOI18N
+        jButtonGuardarInforme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonFinDeCarreraActionPerformed(evt);
+                jButtonGuardarInformeActionPerformed(evt);
             }
         });
 
@@ -173,7 +173,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
                                     .addComponent(jButtonReiniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabelTiempoTomado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButtonFinalCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                                    .addComponent(jButtonFinDeCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jButtonGuardarInforme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 20, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(54, 54, 54)
@@ -199,7 +199,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonFinalCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonFinDeCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButtonGuardarInforme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -271,20 +271,21 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_cronometroMouseClicked
 
-    private void jButtonFinDeCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinDeCarreraActionPerformed
-          for(Participante p: carrera.getListaDeParticipantes()){
-             logCarrera.agregarLlegada(new Llegadas(p.getDorsal(),p.getTiempo(), p.getNombre()));
-          }
-          String nomFichero=carrera.getNomCarrera()+".csv";
-          lf.abrirFicheroCSVEscrituraLlegadas(carrera.getNomCarrera(),carrera.getFecha(),nomFichero,logCarrera.getListaLlegadas());
-          
-    }//GEN-LAST:event_jButtonFinDeCarreraActionPerformed
+    private void jButtonGuardarInformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarInformeActionPerformed
+        for (Participante p : carrera.getListaDeParticipantes()) {
+            logCarrera.agregarLlegada(new Llegadas(p.getDorsal(), p.getTiempo(), p.getNombre()));
+        }
+        Collections.sort(logCarrera.getListaLlegadas());
+        String nomFichero = carrera.getNomCarrera() + ".csv";
+        lf.abrirFicheroCSVEscrituraLlegadas(carrera.getNomCarrera(), carrera.getFecha(), nomFichero, logCarrera.getListaLlegadas());
+
+    }//GEN-LAST:event_jButtonGuardarInformeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private jcronometro.Cronometro cronometro;
-    private javax.swing.JButton jButtonFinDeCarrera;
     private javax.swing.JButton jButtonFinalCarrera;
+    private javax.swing.JButton jButtonGuardarInforme;
     private javax.swing.JButton jButtonIniciar;
     private javax.swing.JButton jButtonParar;
     private javax.swing.JButton jButtonReiniciar;

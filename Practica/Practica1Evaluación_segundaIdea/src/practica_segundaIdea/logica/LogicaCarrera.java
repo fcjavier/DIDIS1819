@@ -6,6 +6,7 @@
 package practica_segundaIdea.logica;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import practica_segundaIdea.dto.Carrera;
 import practica_segundaIdea.dto.Llegadas;
@@ -112,4 +113,5 @@ public class LogicaCarrera {
             return false;
         }
     }
+     
 }
