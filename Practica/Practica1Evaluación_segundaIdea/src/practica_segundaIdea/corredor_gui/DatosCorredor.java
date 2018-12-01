@@ -35,12 +35,15 @@ public class DatosCorredor extends javax.swing.JDialog {
         super(parent, modal);
         paginaPrincipal = (PaginaPrincipal) parent;
         initComponents();
+        this.setTitle("   DATOS PARA EL CORREDOR");
         jButtonRegistrarCorredor.setEnabled(false);
 
         ValidationGroup group = validationPanelCorredor.getValidationGroup();
-        group.add(jTextFieldTelefono, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.REQUIRE_VALID_INTEGER);
+        group.add(jTextFieldTelefono, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.REQUIRE_VALID_NUMBER,
+                StringValidators.maxLength(9), StringValidators.minLength(9));
         group.add(jTextFieldDireccion, StringValidators.REQUIRE_NON_EMPTY_STRING);
-        group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldDNI, StringValidators.REQUIRE_NON_EMPTY_STRING,StringValidators.maxLength(9),
+                StringValidators.minLength(9));
         group.add(jTextFieldNombre, StringValidators.REQUIRE_NON_EMPTY_STRING);
         validationPanelCorredor.addChangeListener(new ChangeListener() {
             @Override
