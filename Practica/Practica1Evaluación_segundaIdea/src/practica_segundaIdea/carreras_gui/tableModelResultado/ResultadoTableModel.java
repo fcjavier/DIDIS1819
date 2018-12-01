@@ -31,11 +31,14 @@ public class ResultadoTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return cabecera.length;
     }
 
     @Override
     public Object getValueAt(int fila, int columna) {
+        if(cont==this.getRowCount()){
+            cont=0;
+        }
         switch (columna) {
             case 0:
                 cont++;
@@ -53,5 +56,5 @@ public class ResultadoTableModel extends AbstractTableModel {
     @Override
     public String getColumnName(int columna) {
         return cabecera[columna];
-    }
+    } 
 }
