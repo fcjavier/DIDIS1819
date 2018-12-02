@@ -35,7 +35,8 @@ public class DatosCorredor extends javax.swing.JDialog {
         super(parent, modal);
         paginaPrincipal = (PaginaPrincipal) parent;
         initComponents();
-        this.setTitle("   DATOS PARA EL CORREDOR");
+        this.setLocationRelativeTo(null);
+        this.setTitle("DATOS PARA EL CORREDOR");
         jButtonRegistrarCorredor.setEnabled(false);
 
         ValidationGroup group = validationPanelCorredor.getValidationGroup();
@@ -101,6 +102,8 @@ public class DatosCorredor extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
+        setResizable(false);
 
         jLabelNombre.setText("Nombre:");
 
@@ -116,7 +119,7 @@ public class DatosCorredor extends javax.swing.JDialog {
 
         jTextFieldDNI.setName("DNI"); // NOI18N
 
-        jSpinnerFecha.setModel(new javax.swing.SpinnerDateModel());
+        jSpinnerFecha.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(1543705200000L), null, new java.util.Date(1543705200000L), java.util.Calendar.DAY_OF_MONTH));
 
         jTextFieldDireccion.setName("Dirección"); // NOI18N
 
@@ -140,22 +143,22 @@ public class DatosCorredor extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDatosCorredorLayout.createSequentialGroup()
                 .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelDatosCorredorLayout.createSequentialGroup()
-                        .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addContainerGap(258, Short.MAX_VALUE)
+                        .addComponent(jButtonRegistrarCorredor))
+                    .addGroup(jPanelDatosCorredorLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanelDatosCorredorLayout.createSequentialGroup()
-                                .addGap(52, 52, 52)
                                 .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabelTelefono, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDatosCorredorLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelDatosCorredorLayout.createSequentialGroup()
+                                        .addGap(52, 52, 52)
+                                        .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabelNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabelTelefono, javax.swing.GroupLayout.Alignment.TRAILING)))
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(validationPanelCorredor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanelDatosCorredorLayout.createSequentialGroup()
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -163,11 +166,8 @@ public class DatosCorredor extends javax.swing.JDialog {
                                     .addComponent(jTextFieldDNI, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jSpinnerFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                                     .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE))))
-                    .addGroup(jPanelDatosCorredorLayout.createSequentialGroup()
-                        .addContainerGap(267, Short.MAX_VALUE)
-                        .addComponent(jButtonRegistrarCorredor)))
+                                    .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(validationPanelCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(63, 63, 63))
         );
         jPanelDatosCorredorLayout.setVerticalGroup(
@@ -199,9 +199,9 @@ public class DatosCorredor extends javax.swing.JDialog {
                     .addComponent(jLabelTelefono))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonRegistrarCorredor)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(validationPanelCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,7 +216,7 @@ public class DatosCorredor extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap()
                 .addComponent(jPanelDatosCorredor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -229,6 +229,13 @@ public class DatosCorredor extends javax.swing.JDialog {
         if (!lc.comprobarDNI(jTextFieldDNI.getText())) {
             JOptionPane.showMessageDialog(this, "DNI INCORRECTO", "", JOptionPane.WARNING_MESSAGE);
             registrar = false;
+        }
+        Date hoy=new Date();
+        hoy.getTime();
+        Date fech=(Date) jSpinnerFecha.getValue();
+        if(fech.after(hoy)){
+            JOptionPane.showMessageDialog(this, "COMPRUEBE LA FECHAS DE NACIMIENTO");
+            registrar=false;
         }
         if (!lc.comprobarTelefono(jTextFieldTelefono.getText())) {
             JOptionPane.showMessageDialog(this, "TELÉFONO INCORRECTO", "", JOptionPane.WARNING_MESSAGE);

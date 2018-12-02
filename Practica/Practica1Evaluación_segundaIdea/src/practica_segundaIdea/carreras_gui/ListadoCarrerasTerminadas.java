@@ -8,6 +8,7 @@ package practica_segundaIdea.carreras_gui;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.TableRowSorter;
@@ -66,8 +67,14 @@ public class ListadoCarrerasTerminadas extends javax.swing.JDialog {
         jTableListadoCarrerasTerminadas = new javax.swing.JTable();
         jButtonVerParticipantes = new javax.swing.JButton();
         jButtonInformeCarreras = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBoxFiltro = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jButtonSalirFiltrado = new javax.swing.JButton();
+        jTextFieldFiltrar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(570, 360));
 
         jTableListadoCarrerasTerminadas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,25 +103,71 @@ public class ListadoCarrerasTerminadas extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText(org.openide.util.NbBundle.getMessage(ListadoCarrerasTerminadas.class, "ListadoCarrerasTerminadas.jLabel1.text")); // NOI18N
+
+        jComboBoxFiltro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jComboBoxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NOMBRE", "FECHA NACIMIENTO", "LUGAR", "MAX PARTICIPANTES", " " }));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton1.setText(org.openide.util.NbBundle.getMessage(ListadoCarrerasTerminadas.class, "ListadoCarrerasTerminadas.jButton1.text")); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButtonSalirFiltrado.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonSalirFiltrado.setText(org.openide.util.NbBundle.getMessage(ListadoCarrerasTerminadas.class, "ListadoCarrerasTerminadas.jButtonSalirFiltrado.text")); // NOI18N
+        jButtonSalirFiltrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirFiltradoActionPerformed(evt);
+            }
+        });
+
+        jTextFieldFiltrar.setText(org.openide.util.NbBundle.getMessage(ListadoCarrerasTerminadas.class, "ListadoCarrerasTerminadas.jTextFieldFiltrar.text")); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButtonVerParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonVerParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonInformeCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonInformeCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jComboBoxFiltro, 0, 155, Short.MAX_VALUE)
+                        .addComponent(jButtonSalirFiltrado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVerParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jComboBoxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonVerParticipantes, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(jButtonInformeCarreras, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jTextFieldFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonInformeCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSalirFiltrado, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,7 +194,6 @@ public class ListadoCarrerasTerminadas extends javax.swing.JDialog {
         try {
             int opcion = jTableListadoCarrerasTerminadas.convertRowIndexToModel(jTableListadoCarrerasTerminadas.getSelectedRow());            
             carrera = logCarrera.getListaCarrerasFinalizadas().get(opcion);
-            System.out.println(carrera.getNomCarrera().toString());
             ListaParticipantesCarrera listaParticipantesCarrera = new ListaParticipantesCarrera(paginaPrincipal, true, carrera);
             listaParticipantesCarrera.setVisible(true);
         } catch (Exception e) {
@@ -163,12 +215,42 @@ public class ListadoCarrerasTerminadas extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jButtonInformeCarrerasActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         if(jComboBoxFiltro.getSelectedItem().equals("NOMBRE")){
+             RowFilter<CarreraTableModelFinalizada, Integer> rf=RowFilter.regexFilter(jTextFieldFiltrar.getText(), 0);
+             sorter.setRowFilter(rf);
+         }
+         if(jComboBoxFiltro.getSelectedItem().equals("FECHA NACIMIENTO")){
+             RowFilter<CarreraTableModelFinalizada, Integer> rf1=RowFilter.regexFilter(jTextFieldFiltrar.getText(), 1);
+             sorter.setRowFilter(rf1);
+         }
+         if(jComboBoxFiltro.getSelectedItem().equals("LUGAR")){
+             RowFilter<CarreraTableModelFinalizada, Integer> rf2=RowFilter.regexFilter(jTextFieldFiltrar.getText(), 2);
+             sorter.setRowFilter(rf2);
+         }
+         if(jComboBoxFiltro.getSelectedItem().equals("MAX PARTICIPANTES")){
+             RowFilter<CarreraTableModelFinalizada, Integer> rf3=RowFilter.regexFilter(jTextFieldFiltrar.getText(), 3);
+             sorter.setRowFilter(rf3);
+         }
+         jTextFieldFiltrar.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonSalirFiltradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirFiltradoActionPerformed
+        rellenarTableCarrera();
+        jTextFieldFiltrar.setText("");
+    }//GEN-LAST:event_jButtonSalirFiltradoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonInformeCarreras;
+    private javax.swing.JButton jButtonSalirFiltrado;
     private javax.swing.JButton jButtonVerParticipantes;
+    private javax.swing.JComboBox<String> jComboBoxFiltro;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableListadoCarrerasTerminadas;
+    private javax.swing.JTextField jTextFieldFiltrar;
     // End of variables declaration//GEN-END:variables
 }

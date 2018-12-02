@@ -42,6 +42,8 @@ public class DatosCarrera extends javax.swing.JDialog {
         super(parent, modal);
         paginaPrincipal = (PaginaPrincipal) parent;
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("DATOS PARA LA CARRERA");
         jButtonRegistrarCarrera.setEnabled(false);
         ValidationGroup group = validationPanelCarreras.getValidationGroup();
         group.add(jTextFieldLugarCarrera, StringValidators.REQUIRE_NON_EMPTY_STRING);
@@ -57,7 +59,7 @@ public class DatosCarrera extends javax.swing.JDialog {
             }
         });
     }
-
+    
     /**
      * Método que crea una carrera, a partir de los contenidos en las vistas del
      * panel.
@@ -88,6 +90,7 @@ public class DatosCarrera extends javax.swing.JDialog {
             dispose();
         }
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,6 +115,7 @@ public class DatosCarrera extends javax.swing.JDialog {
         validationPanelCarreras = new org.netbeans.validation.api.ui.swing.ValidationPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText(org.openide.util.NbBundle.getMessage(DatosCarrera.class, "DatosCarrera.jLabel1.text")); // NOI18N
@@ -127,12 +131,12 @@ public class DatosCarrera extends javax.swing.JDialog {
         jTextFieldNombreCarrera.setText(org.openide.util.NbBundle.getMessage(DatosCarrera.class, "DatosCarrera.Nombre.text")); // NOI18N
         jTextFieldNombreCarrera.setName("Nombre"); // NOI18N
 
-        jSpinnerFechaCarrera.setModel(new javax.swing.SpinnerDateModel());
+        jSpinnerFechaCarrera.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), new java.util.Date(1543713684888L), null, java.util.Calendar.DAY_OF_MONTH));
 
         jTextFieldLugarCarrera.setText(org.openide.util.NbBundle.getMessage(DatosCarrera.class, "DatosCarrera.Lugar.text")); // NOI18N
         jTextFieldLugarCarrera.setName("Lugar"); // NOI18N
 
-        jSpinnerMaxParticipantes.setModel(new javax.swing.SpinnerNumberModel());
+        jSpinnerMaxParticipantes.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jButtonRegistrarCarrera.setText(org.openide.util.NbBundle.getMessage(DatosCarrera.class, "DatosCarrera.jButtonRegistrarCarrera.text")); // NOI18N
         jButtonRegistrarCarrera.addActionListener(new java.awt.event.ActionListener() {

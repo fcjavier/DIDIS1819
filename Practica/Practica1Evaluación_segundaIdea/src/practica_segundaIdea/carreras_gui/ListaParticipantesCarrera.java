@@ -83,8 +83,10 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
         jTextFieldFiltro = new javax.swing.JTextField();
         jButtonFiltrar = new javax.swing.JButton();
         jButtonSalirFiltrado = new javax.swing.JButton();
+        jComboBoxFiltrar = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(620, 450));
 
         jTableParticipantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -99,6 +101,7 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTableParticipantes);
 
+        jButtonEliminarParticipante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButtonEliminarParticipante.setText(org.openide.util.NbBundle.getMessage(ListaParticipantesCarrera.class, "ListaParticipantesCarrera.jButtonEliminarParticipante.text")); // NOI18N
         jButtonEliminarParticipante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +109,7 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
             }
         });
 
+        jButtonAsignarDorsal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButtonAsignarDorsal.setText(org.openide.util.NbBundle.getMessage(ListaParticipantesCarrera.class, "ListaParticipantesCarrera.jButtonAsignarDorsal.text")); // NOI18N
         jButtonAsignarDorsal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,8 +117,10 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
             }
         });
 
+        jTextFieldFiltro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldFiltro.setText(org.openide.util.NbBundle.getMessage(ListaParticipantesCarrera.class, "ListaParticipantesCarrera.jTextFieldFiltro.text")); // NOI18N
 
+        jButtonFiltrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButtonFiltrar.setText(org.openide.util.NbBundle.getMessage(ListaParticipantesCarrera.class, "ListaParticipantesCarrera.jButtonFiltrar.text")); // NOI18N
         jButtonFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,12 +128,16 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
             }
         });
 
+        jButtonSalirFiltrado.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButtonSalirFiltrado.setText(org.openide.util.NbBundle.getMessage(ListaParticipantesCarrera.class, "ListaParticipantesCarrera.jButtonSalirFiltrado.text")); // NOI18N
         jButtonSalirFiltrado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirFiltradoActionPerformed(evt);
             }
         });
+
+        jComboBoxFiltrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jComboBoxFiltrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NOMBRE", "DORSAL" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,34 +151,37 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
                         .addComponent(jButtonEliminarParticipante)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonAsignarDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBoxFiltrar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonSalirFiltrado)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonSalirFiltrado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldFiltro))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBoxFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSalirFiltrado)
+                            .addComponent(jButtonFiltrar))
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonAsignarDorsal)
-                            .addComponent(jButtonEliminarParticipante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(22, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonFiltrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonSalirFiltrado)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jButtonEliminarParticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAsignarDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -185,7 +198,7 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -226,8 +239,14 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonAsignarDorsalActionPerformed
 
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
+        if(jComboBoxFiltrar.getSelectedItem().equals("NOMBRE")){
         RowFilter<ParticipantesTableModel, Integer> rf = RowFilter.regexFilter(jTextFieldFiltro.getText(), 1);
         sorter.setRowFilter(rf);
+        }
+        if(jComboBoxFiltrar.getSelectedItem().equals("DORSAL")){
+        RowFilter<ParticipantesTableModel, Integer> rf1 = RowFilter.regexFilter(jTextFieldFiltro.getText(), 2);
+        sorter.setRowFilter(rf1);
+        }
         jTextFieldFiltro.setText("");
     }//GEN-LAST:event_jButtonFiltrarActionPerformed
 
@@ -242,6 +261,7 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
     private javax.swing.JButton jButtonEliminarParticipante;
     private javax.swing.JButton jButtonFiltrar;
     private javax.swing.JButton jButtonSalirFiltrado;
+    private javax.swing.JComboBox<String> jComboBoxFiltrar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableParticipantes;
