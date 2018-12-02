@@ -89,7 +89,6 @@
                               <Component id="jButtonSalirFiltrado" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonFiltrar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -97,9 +96,9 @@
                               <Component id="jButtonEliminarParticipante" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                               <Component id="jButtonAsignarDorsal" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

@@ -34,6 +34,7 @@ public class InformeCarrera extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.carrera = carrera;
+        this.setTitle("INFORME DE RESULTADOS");
         jLabelNombreCarrera.setText("Carrera:  " + carrera.getNomCarrera());
         jLabelFechaCarrera.setText("Fecha:    " + carrera.getFecha());
         rellenarTablaResultados();         

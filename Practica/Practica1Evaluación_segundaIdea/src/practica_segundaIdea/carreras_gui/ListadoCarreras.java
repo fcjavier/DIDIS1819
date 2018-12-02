@@ -86,6 +86,13 @@ public class ListadoCarreras extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(670, 430));
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         jTableListaCarreras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -363,6 +370,10 @@ public class ListadoCarreras extends javax.swing.JDialog {
         rellenarTableCarrera();
         jTextFieldFiltrado.setText("");
     }//GEN-LAST:event_jButtonSalirFiltradoActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+         rellenarTableCarrera();
+    }//GEN-LAST:event_formWindowGainedFocus
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

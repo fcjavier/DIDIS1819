@@ -51,6 +51,7 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
         super(parent, modal);
         paginaPrincipal = (PaginaPrincipal) parent;
         initComponents();
+        this.setTitle("LISTADO DE CORREDORES");
         this.carrera = c;
         rellenarTablaCorredores();
     }
@@ -94,7 +95,7 @@ public class ListadoDeCorredores extends javax.swing.JDialog {
         jTextFielFiltrar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(650, 500));
+        setMinimumSize(new java.awt.Dimension(680, 500));
 
         jTableCorredores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

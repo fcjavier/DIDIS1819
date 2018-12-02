@@ -28,7 +28,7 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
     ParticipantesTableModel ptm;
     LogicaCarrera lc = new LogicaCarrera();
     LogicaFicherosObjetos lfo = new LogicaFicherosObjetos();
-    TableRowSorter<ParticipantesTableModel> sorter;
+    TableRowSorter<ParticipantesTableModel> sorter;    
     Carrera carrera;
     Participante p;
 
@@ -42,7 +42,7 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.carrera = c;
-        this.setTitle(c.getNomCarrera());
+        this.setTitle("PARTICIPANTES EN: "+(c.getNomCarrera().toUpperCase()).toString());
         rellenarTabalParicipantes();
         anularBoton();
     }
@@ -225,12 +225,15 @@ public class ListaParticipantesCarrera extends javax.swing.JDialog {
 
     private void jButtonAsignarDorsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAsignarDorsalActionPerformed
         try {
+            boolean valido=true;
             int seleccion = jTableParticipantes.convertRowIndexToModel(jTableParticipantes.getSelectedRow());
             p = carrera.getListaDeParticipantes().get(seleccion);
-            String dorsal = JOptionPane.showInputDialog(this, "ASIGNAR DORSAL(000-999)", "DORSAL", JOptionPane.QUESTION_MESSAGE);
+            String dorsal = JOptionPane.showInputDialog(this, "ASIGNAR DORSAL(000-999)", "DORSAL", JOptionPane.QUESTION_MESSAGE);                                
+            
             p.setDorsal(dorsal);
             lfo.abrirFicheroObjetosGrabar("carreras.txt", lc.getListaCarreras());
             ptm.fireTableDataChanged();
+ 
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(this, "No hay selección", "", JOptionPane.INFORMATION_MESSAGE);
         }
