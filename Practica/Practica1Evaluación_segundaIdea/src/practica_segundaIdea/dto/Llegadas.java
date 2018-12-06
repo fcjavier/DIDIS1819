@@ -12,13 +12,14 @@ import java.util.Objects;
  *
  * @author USER
  */
-public class Llegadas implements Serializable{
+public class Llegadas implements Serializable {
+
     //Atributos      
     private String dorsal;
     private String tiempo;
     private String nomCorredor;
-     
-    
+
+    //Constructores
     public Llegadas() {
     }
 
@@ -26,9 +27,10 @@ public class Llegadas implements Serializable{
         this.dorsal = dorsal;
         this.tiempo = tiempo;
         this.nomCorredor = nomCorredor;
-      
+
     }
 
+    //Getters and Setters
     public String getDorsal() {
         return dorsal;
     }
@@ -52,8 +54,7 @@ public class Llegadas implements Serializable{
     public void setNomCorredor(String nomCorredor) {
         this.nomCorredor = nomCorredor;
     }
- 
- 
+
     @Override
     public int hashCode() {
         int hash = 5;
@@ -78,6 +79,5 @@ public class Llegadas implements Serializable{
         }
         return true;
     }
- 
-    
+
 }

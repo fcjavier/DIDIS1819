@@ -20,11 +20,13 @@ public class Participante implements Serializable {
     private String dorsal;
     private String tiempo;
 
+    //Constructor
     public Participante(String dni, String nombre) {
         this.dni = dni;
         this.nombre = nombre;
     }
 
+    //Getters and Setters
     public String getDni() {
         return dni;
     }
@@ -81,7 +83,5 @@ public class Participante implements Serializable {
         }
         return true;
     }
-
-    
 
 }

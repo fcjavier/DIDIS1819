@@ -25,6 +25,7 @@ import practica_segundaIdea.dto.Llegadas;
  */
 public class LogicaFicheros {
 
+    //Atributos
     private List<Corredor> lista;
     private List<Carrera> carreras;
 
@@ -183,13 +184,24 @@ public class LogicaFicheros {
         return c;
     }
 
-        public boolean abrirFicheroCSVEscrituraLlegadas(String nomCarrera,String fecha,String fichero, List<Llegadas> llegadas) {
+    /**
+     * Método que abre un fichero para registrar los datos de llegada en una
+     * carrera en un fichero csv. Con el nombre de la carrera y los datos del
+     * participante dorsal,nombre y tiempo realizado.
+     *
+     * @param nomCarrera
+     * @param fecha
+     * @param fichero
+     * @param llegadas
+     * @return boolean
+     */
+    public boolean abrirFicheroCSVEscrituraLlegadas(String nomCarrera, String fecha, String fichero, List<Llegadas> llegadas) {
         boolean correcto = true;
         FileWriter fw = null;
         try {
             BufferedWriter escribe = new BufferedWriter(new FileWriter(fichero));
-            escribe.write(nomCarrera+"\r\n");
-            escribe.write(fecha+"\r\n");
+            escribe.write(nomCarrera + "\r\n");
+            escribe.write(fecha + "\r\n");
             for (Llegadas llegada : llegadas) {
                 try {
                     escribe.write(llegada.getDorsal() + "," + llegada.getTiempo() + ","

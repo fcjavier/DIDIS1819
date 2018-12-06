@@ -6,7 +6,6 @@
 package practica_segundaIdea.logica;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import practica_segundaIdea.dto.Carrera;
 import practica_segundaIdea.dto.Llegadas;
@@ -17,6 +16,7 @@ import practica_segundaIdea.dto.Llegadas;
  */
 public class LogicaCarrera {
 
+    //Atributos
     private static List<Carrera> listaCarreras = new ArrayList<Carrera>();
     private static List<Carrera> listaCarrerasFinalizadas = new ArrayList<Carrera>();
     private static List<Llegadas> listaLlegadas = new ArrayList<Llegadas>();
@@ -54,10 +54,9 @@ public class LogicaCarrera {
     }
 
     public void cargarListaCarrerasFinalizadas(List<Carrera> listaCarrerasFinalizadas) {
-         this.listaCarrerasFinalizadas = listaCarrerasFinalizadas;
+        this.listaCarrerasFinalizadas = listaCarrerasFinalizadas;
     }
 
-    
     /**
      * Método que busca una carrera en la lista por su nombre recibe un
      * parámetro tipo String con el nombre de la carrera.
@@ -79,7 +78,7 @@ public class LogicaCarrera {
      * Método para la eliminación de una carrera en concreto dentro de una lista
      * de carreras.Recibe un parámetro tipo (object) con la carrera.
      *
-     * @param c
+     * @param c de tipo Carrera.
      * @return boolean.
      */
     public boolean anularCarrera(Carrera c) {
@@ -90,6 +89,13 @@ public class LogicaCarrera {
         return anular;
     }
 
+    /**
+     * Método que agrega una carrera finalizada a la lista recibe un parámetros
+     * de tipo(object).
+     *
+     * @param carrera
+     * @return boolean
+     */
     public boolean agregarCarreraFinalizada(Carrera carrera) {
         boolean agregado = false;
         if (carrera.isIniciada()) {
@@ -105,13 +111,19 @@ public class LogicaCarrera {
     public void setListaLlegadas(List<Llegadas> listaLlegadas) {
         LogicaCarrera.listaLlegadas = listaLlegadas;
     }
-    
-    public boolean agregarLlegada(Llegadas llegada){        
-        if(listaLlegadas.add(llegada)){
+
+    /**
+     * Método que agrega un objeto tipo(llegada) a la lista de llegadas.
+     *
+     * @param llegada
+     * @return boolean
+     */
+    public boolean agregarLlegada(Llegadas llegada) {
+        if (listaLlegadas.add(llegada)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-     
+
 }

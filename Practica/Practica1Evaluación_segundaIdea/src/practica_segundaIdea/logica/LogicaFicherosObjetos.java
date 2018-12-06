@@ -24,10 +24,18 @@ import practica_segundaIdea.dto.Carrera;
  */
 public class LogicaFicherosObjetos {
 
+    //Atributos
     File fichero = null;
     ObjectOutputStream escribe = null;
     ObjectInputStream lee = null;
 
+    /**
+     * Método que realiza la apertura de un fichero de objetos para grabar
+     * registros.
+     *
+     * @param f nombre del fichero.
+     * @param lista ArrayList con las carreras.
+     */
     public void abrirFicheroObjetosGrabar(String f, List<Carrera> lista) {
         fichero = new File(f);
         try {
@@ -43,6 +51,12 @@ public class LogicaFicherosObjetos {
         }
     }
 
+    /**
+     * Método para abrir un fichero de objetos para su lectura.
+     *
+     * @param fichero
+     * @return Un ArrayList de carreras
+     */
     public List<Carrera> abrirFicheroObjetosLeer(File fichero) {
         List<Carrera> lista = new ArrayList<>();
         if (fichero.exists()) {

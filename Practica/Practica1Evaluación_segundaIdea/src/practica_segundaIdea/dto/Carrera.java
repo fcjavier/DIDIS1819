@@ -14,7 +14,7 @@ import java.util.Objects;
  *
  * @author USER
  */
-public class Carrera implements Serializable{
+public class Carrera implements Serializable {
 
     //Atributos
     private String nomCarrera;
@@ -23,6 +23,7 @@ public class Carrera implements Serializable{
     private int maxParticipantes;
     private List<Participante> listaDeParticipantes;
     private boolean iniciada;
+
     //Constructores
     public Carrera() {
     }
@@ -32,9 +33,9 @@ public class Carrera implements Serializable{
         this.fecha = fecha;
         this.lugar = lugar;
         this.maxParticipantes = maxParticipantes;
-        listaDeParticipantes=new ArrayList<>();
-        this.iniciada=false;
-        
+        listaDeParticipantes = new ArrayList<>();
+        this.iniciada = false;
+
     }
 
     //Getters and Setters
@@ -85,7 +86,7 @@ public class Carrera implements Serializable{
     public void setIniciada(boolean iniciada) {
         this.iniciada = iniciada;
     }
-  
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -118,5 +119,5 @@ public class Carrera implements Serializable{
         }
         return true;
     }
- 
+
 }
