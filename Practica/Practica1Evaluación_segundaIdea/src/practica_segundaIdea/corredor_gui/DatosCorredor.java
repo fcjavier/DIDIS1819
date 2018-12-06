@@ -30,6 +30,8 @@ public class DatosCorredor extends javax.swing.JDialog {
 
     /**
      * Creates new form DatosCorredor
+     * @param parent
+     * @param modal
      */
     public DatosCorredor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -105,14 +107,21 @@ public class DatosCorredor extends javax.swing.JDialog {
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
+        jPanelDatosCorredor.setBackground(new java.awt.Color(0, 204, 153));
+
+        jLabelNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelNombre.setText("Nombre:");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("DNI:");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Fecha Nacimiento:");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Dirección:");
 
+        jLabelTelefono.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelTelefono.setText("Teléfono:");
 
         jTextFieldNombre.setName("Nombre"); // NOI18N
@@ -132,8 +141,12 @@ public class DatosCorredor extends javax.swing.JDialog {
             }
         });
 
+        validationPanelCorredor.setOpaque(false);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Formato   ( 555777999 )");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Formato   (  99888777H )");
 
         javax.swing.GroupLayout jPanelDatosCorredorLayout = new javax.swing.GroupLayout(jPanelDatosCorredor);
@@ -143,31 +156,31 @@ public class DatosCorredor extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDatosCorredorLayout.createSequentialGroup()
                 .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelDatosCorredorLayout.createSequentialGroup()
-                        .addContainerGap(258, Short.MAX_VALUE)
-                        .addComponent(jButtonRegistrarCorredor))
-                    .addGroup(jPanelDatosCorredorLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonRegistrarCorredor)
                             .addGroup(jPanelDatosCorredorLayout.createSequentialGroup()
-                                .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelDatosCorredorLayout.createSequentialGroup()
-                                        .addGap(52, 52, 52)
-                                        .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabelNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabelTelefono, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(jLabelNombre)
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldDNI, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSpinnerFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.Alignment.LEADING)))
-                            .addComponent(validationPanelCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanelDatosCorredorLayout.createSequentialGroup()
+                        .addGap(0, 33, Short.MAX_VALUE)
+                        .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(validationPanelCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelDatosCorredorLayout.createSequentialGroup()
+                                .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabelTelefono))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSpinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(63, 63, 63))
         );
         jPanelDatosCorredorLayout.setVerticalGroup(
@@ -197,11 +210,11 @@ public class DatosCorredor extends javax.swing.JDialog {
                 .addGroup(jPanelDatosCorredorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelTelefono))
-                .addGap(18, 18, 18)
-                .addComponent(jButtonRegistrarCorredor)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
+                .addComponent(jButtonRegistrarCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(validationPanelCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

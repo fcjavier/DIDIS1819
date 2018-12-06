@@ -77,13 +77,13 @@ public class InformeCarrera extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 153));
 
-        jLabelNombreCarrera.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabelNombreCarrera.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabelNombreCarrera.setForeground(new java.awt.Color(204, 204, 255));
         jLabelNombreCarrera.setText(org.openide.util.NbBundle.getMessage(InformeCarrera.class, "InformeCarrera.jLabelNombreCarrera.text")); // NOI18N
-        jLabelNombreCarrera.setOpaque(true);
 
-        jLabelFechaCarrera.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabelFechaCarrera.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabelFechaCarrera.setForeground(new java.awt.Color(204, 204, 255));
         jLabelFechaCarrera.setText(org.openide.util.NbBundle.getMessage(InformeCarrera.class, "InformeCarrera.jLabelFechaCarrera.text")); // NOI18N
-        jLabelFechaCarrera.setOpaque(true);
 
         jTableTiemposLlegada.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

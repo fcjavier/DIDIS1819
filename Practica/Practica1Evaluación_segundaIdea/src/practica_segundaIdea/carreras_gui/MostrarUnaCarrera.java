@@ -55,21 +55,32 @@ public class MostrarUnaCarrera extends javax.swing.JDialog {
         jLabelMaxParticipantes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(0, 204, 153));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText(org.openide.util.NbBundle.getMessage(MostrarUnaCarrera.class, "MostrarUnaCarrera.jLabel1.text")); // NOI18N
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText(org.openide.util.NbBundle.getMessage(MostrarUnaCarrera.class, "MostrarUnaCarrera.jLabel2.text")); // NOI18N
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText(org.openide.util.NbBundle.getMessage(MostrarUnaCarrera.class, "MostrarUnaCarrera.jLabel3.text")); // NOI18N
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText(org.openide.util.NbBundle.getMessage(MostrarUnaCarrera.class, "MostrarUnaCarrera.jLabel4.text")); // NOI18N
 
+        jLabelNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelNombre.setText(org.openide.util.NbBundle.getMessage(MostrarUnaCarrera.class, "MostrarUnaCarrera.jLabelNombre.text")); // NOI18N
 
+        jLabelFecha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelFecha.setText(org.openide.util.NbBundle.getMessage(MostrarUnaCarrera.class, "MostrarUnaCarrera.jLabelFecha.text")); // NOI18N
 
+        jLabelLugar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelLugar.setText(org.openide.util.NbBundle.getMessage(MostrarUnaCarrera.class, "MostrarUnaCarrera.jLabelLugar.text")); // NOI18N
 
+        jLabelMaxParticipantes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelMaxParticipantes.setText(org.openide.util.NbBundle.getMessage(MostrarUnaCarrera.class, "MostrarUnaCarrera.jLabelMaxParticipantes.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -77,18 +88,19 @@ public class MostrarUnaCarrera extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelMaxParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                    .addComponent(jLabelFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelLugar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelMaxParticipantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,10 +110,9 @@ public class MostrarUnaCarrera extends javax.swing.JDialog {
                     .addComponent(jLabel1)
                     .addComponent(jLabelNombre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelFecha)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelFecha)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)

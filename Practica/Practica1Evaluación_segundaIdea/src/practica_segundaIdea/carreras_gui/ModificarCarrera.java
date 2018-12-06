@@ -74,13 +74,20 @@ public class ModificarCarrera extends javax.swing.JDialog {
         jButtonModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(0, 204, 153));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText(org.openide.util.NbBundle.getMessage(ModificarCarrera.class, "ModificarCarrera.jLabel1.text")); // NOI18N
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText(org.openide.util.NbBundle.getMessage(ModificarCarrera.class, "ModificarCarrera.jLabel2.text")); // NOI18N
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText(org.openide.util.NbBundle.getMessage(ModificarCarrera.class, "ModificarCarrera.jLabel3.text")); // NOI18N
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText(org.openide.util.NbBundle.getMessage(ModificarCarrera.class, "ModificarCarrera.jLabel4.text")); // NOI18N
 
         jTextFieldNombre.setText(org.openide.util.NbBundle.getMessage(ModificarCarrera.class, "ModificarCarrera.jTextFieldNombre.text")); // NOI18N
@@ -118,7 +125,7 @@ public class ModificarCarrera extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldFecha)
                             .addComponent(jTextFieldLugar)
-                            .addComponent(jTextFieldMaxParticipantes, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                            .addComponent(jTextFieldMaxParticipantes, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                             .addComponent(jTextFieldNombre, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(18, 18, 18))
         );
@@ -142,7 +149,7 @@ public class ModificarCarrera extends javax.swing.JDialog {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldMaxParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButtonModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addComponent(jButtonModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                 .addGap(19, 19, 19))
         );
 

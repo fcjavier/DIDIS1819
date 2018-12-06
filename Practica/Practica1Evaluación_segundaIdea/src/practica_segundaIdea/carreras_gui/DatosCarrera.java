@@ -117,25 +117,36 @@ public class DatosCarrera extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(0, 204, 153));
+        jPanel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText(org.openide.util.NbBundle.getMessage(DatosCarrera.class, "DatosCarrera.jLabel1.text")); // NOI18N
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText(org.openide.util.NbBundle.getMessage(DatosCarrera.class, "DatosCarrera.jLabel2.text")); // NOI18N
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText(org.openide.util.NbBundle.getMessage(DatosCarrera.class, "DatosCarrera.jLabel3.text")); // NOI18N
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText(org.openide.util.NbBundle.getMessage(DatosCarrera.class, "DatosCarrera.jLabel4.text")); // NOI18N
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText(org.openide.util.NbBundle.getMessage(DatosCarrera.class, "DatosCarrera.jLabel5.text")); // NOI18N
 
+        jTextFieldNombreCarrera.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldNombreCarrera.setText(org.openide.util.NbBundle.getMessage(DatosCarrera.class, "DatosCarrera.Nombre.text")); // NOI18N
         jTextFieldNombreCarrera.setName("Nombre"); // NOI18N
 
+        jSpinnerFechaCarrera.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jSpinnerFechaCarrera.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), new java.util.Date(1543713684888L), null, java.util.Calendar.DAY_OF_MONTH));
 
+        jTextFieldLugarCarrera.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldLugarCarrera.setText(org.openide.util.NbBundle.getMessage(DatosCarrera.class, "DatosCarrera.Lugar.text")); // NOI18N
         jTextFieldLugarCarrera.setName("Lugar"); // NOI18N
 
+        jSpinnerMaxParticipantes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jSpinnerMaxParticipantes.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jButtonRegistrarCarrera.setText(org.openide.util.NbBundle.getMessage(DatosCarrera.class, "DatosCarrera.jButtonRegistrarCarrera.text")); // NOI18N
@@ -145,42 +156,44 @@ public class DatosCarrera extends javax.swing.JDialog {
             }
         });
 
+        validationPanelCarreras.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        validationPanelCarreras.setOpaque(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addComponent(validationPanelCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addGap(36, 36, 36)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jButtonRegistrarCarrera)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jTextFieldNombreCarrera)
                                         .addComponent(jSpinnerFechaCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                                         .addComponent(jTextFieldLugarCarrera)
-                                        .addComponent(jSpinnerMaxParticipantes))))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(validationPanelCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jSpinnerMaxParticipantes)))))))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(jLabel1)
-                .addGap(23, 23, 23)
+                .addGap(18, 18, 18)
                 .addComponent(validationPanelCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -200,7 +213,7 @@ public class DatosCarrera extends javax.swing.JDialog {
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonRegistrarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
