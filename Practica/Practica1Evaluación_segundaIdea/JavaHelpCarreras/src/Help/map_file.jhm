@@ -1,0 +1,13 @@
+<map version="1.0">
+   <mapID target="aplicacion" url="html/main.html" />
+   <mapID target="ventana_principal" url="html/principal.html"/>
+   <mapID target="ventana_corredores" url="html/corredores.html" />
+   <mapID target="ventana_carreras" url="html/carreras.html"/>
+   <mapID target="ventana_participantes" url="html/participantes.html"/>
+   <mapID target="carrera_en_curso" url="html/encurso.html"/>
+   <mapID target="ventana_otras_opciones" url="html/otros.html"/>
+   <mapID target="guardar_registros" url="html/guardar.html"/>
+   <mapID target="ver_participantes" url="html/verparticipantes.html"/>
+   <mapID target="ver_lista_participantes" url="html/ver_lista_participantes.html"/>
+   <mapID target="ver_informe" url="html/ver_informe.html"/>
+</map>
