@@ -5,6 +5,7 @@
  */
 package practica_segundaIdea.carreras_gui;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -281,7 +282,7 @@ public class CarreraEnCurso extends javax.swing.JDialog {
         for (Participante p : carrera.getListaDeParticipantes()) {            
             logCarrera.agregarLlegada(new Llegadas(p.getDorsal(), p.getTiempo(), p.getNombre()));
         }         
-        String nomFichero = carrera.getNomCarrera() + ".csv";
+        String nomFichero = "informes"+File.separator+carrera.getNomCarrera() + ".csv";
         lf.abrirFicheroCSVEscrituraLlegadas(carrera.getNomCarrera(), carrera.getFecha(), nomFichero, logCarrera.getListaLlegadas());
 
     }//GEN-LAST:event_jButtonGuardarInformeActionPerformed

@@ -85,7 +85,7 @@ public class ListadoCarreras extends javax.swing.JDialog {
         jComboBoxFiltro = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(670, 430));
+        setMinimumSize(new java.awt.Dimension(725, 430));
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -203,7 +203,7 @@ public class ListadoCarreras extends javax.swing.JDialog {
                                     .addComponent(jButtonIniciarCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButtonSalirFiltrado, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 14, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1)
                         .addGap(29, 29, 29)
