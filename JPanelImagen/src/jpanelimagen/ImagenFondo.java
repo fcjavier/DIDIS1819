@@ -12,8 +12,8 @@ import java.io.Serializable;
  *
  * @author USER
  */
-public class ImagenFondo implements Serializable{
-    
+public class ImagenFondo implements Serializable {
+
     private File rutaImagen;
     private float opacidad;
 
@@ -37,6 +37,5 @@ public class ImagenFondo implements Serializable{
     public void setOpacidad(float opacidad) {
         this.opacidad = opacidad;
     }
-    
-    
+
 }
