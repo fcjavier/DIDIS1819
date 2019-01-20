@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2Carreras" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="69d8bd70-c97e-403c-b0f7-721f8f73336d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="nomCarrera" class="java.lang.String">
+		<fieldDescription><![CDATA[nomCarrera]]></fieldDescription>
+	</field>
+	<field name="lugar" class="java.lang.String">
+		<fieldDescription><![CDATA[lugar]]></fieldDescription>
+	</field>
+	<field name="maxParticipantes" class="java.lang.Integer">
+		<fieldDescription><![CDATA[maxParticipantes]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="55" y="12" width="177" height="22" backcolor="#CCCCCC" uuid="59ad7e7f-2a0e-499c-a508-a06cca00f04d"/>
+				<box topPadding="3" bottomPadding="3"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[   CARRERAS SIN FINALIZAR]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="85" y="2" width="100" height="20" uuid="8dd0061d-2aa2-4279-80b5-aa072c7b47ae"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="2" width="100" height="20" uuid="1796118a-bb26-4918-8c45-107b2f740fab"/>
+				<text><![CDATA[LUGAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="2" width="100" height="20" uuid="3b31513b-e629-46ca-b99c-127779432b23"/>
+				<text><![CDATA[Nº PARTICIPANTES]]></text>
+			</staticText>
+			<line>
+				<reportElement x="57" y="22" width="459" height="1" uuid="b6217eac-78f1-40b4-b8b7-44e0c66e8a87"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="85" y="0" width="147" height="20" uuid="c377090d-a109-4a58-b308-39f0f3be594e"/>
+				<textFieldExpression><![CDATA[$F{nomCarrera}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="0" width="121" height="20" uuid="42c6c64e-2a91-4b17-a51c-91f79999fe6e"/>
+				<textFieldExpression><![CDATA[$F{lugar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="0" width="52" height="20" uuid="bbe7529e-c882-4610-b25c-05abd0bb1767"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{maxParticipantes}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="221" y="2" width="80" height="20" uuid="fd216f3f-aafe-4852-9781-bf915e40ea03"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="301" y="2" width="40" height="20" uuid="80f70459-8649-42aa-b2b0-e109f6bdf871"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

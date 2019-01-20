@@ -31,10 +31,10 @@ public class LogicaCorredor {
      *
      * @return List
      */
-    public List<Corredor> getListaCorredores() {
+    public static List<Corredor> getListaCorredores() {
         return listaCorredores;
     }
-
+    
     /**
      * Método que crea una colección de corredores. Recibe un parámetro de tipo
      * List.

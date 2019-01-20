@@ -36,7 +36,7 @@ public class LogicaCarrera {
         return agregado;
     }
 
-    public List<Carrera> getListaCarreras() {
+    public static List<Carrera> getListaCarreras() {
         return listaCarreras;
     }
 
@@ -49,7 +49,7 @@ public class LogicaCarrera {
         listaCarreras = carreras;
     }
 
-    public List<Carrera> getListaCarrerasFinalizadas() {
+    public static List<Carrera> getListaCarrerasFinalizadas() {
         return listaCarrerasFinalizadas;
     }
 
@@ -104,7 +104,7 @@ public class LogicaCarrera {
         return agregado;
     }
 
-    public List<Llegadas> getListaLlegadas() {
+    public static List<Llegadas> getListaLlegadas() {
         return listaLlegadas;
     }
 

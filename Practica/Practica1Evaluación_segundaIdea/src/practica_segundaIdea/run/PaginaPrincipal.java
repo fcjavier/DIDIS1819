@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import org.openide.util.Exceptions;
 import practica_segundaIdea.dto.Carrera;
 import practica_segundaIdea.dto.Corredor;
+import practica_segundaIdea.informes_gui.InformesPrincipal;
 import practica_segundaIdea.logica.LogicaCarrera;
 import practica_segundaIdea.logica.LogicaCorredor;
 import practica_segundaIdea.logica.LogicaFicheros;
@@ -146,6 +147,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jMenuItemAyuda = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItemGenerarInformes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(650, 500));
@@ -313,7 +316,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButtonModificarCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonConsultarCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonListarCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -322,7 +325,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButtonModificarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonConsultarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonListarCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -340,7 +343,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         jMenuBar.add(jMenuAyuda);
 
-        jMenu1.setText("Apariencia");
+        jMenu1.setText("Apariencia        ");
 
         jMenuItem1.setText("Look and Feel");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -351,6 +354,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuBar.add(jMenu1);
+
+        jMenu2.setText("Informes      ");
+
+        jMenuItemGenerarInformes.setText("Generar Informes");
+        jMenuItemGenerarInformes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemGenerarInformesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemGenerarInformes);
+
+        jMenuBar.add(jMenu2);
 
         setJMenuBar(jMenuBar);
 
@@ -525,6 +540,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
       fkf.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItemGenerarInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGenerarInformesActionPerformed
+         InformesPrincipal informesPrincipal = new InformesPrincipal(this, true);
+         informesPrincipal.setVisible(true);
+    }//GEN-LAST:event_jMenuItemGenerarInformesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -578,10 +598,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenuAyuda;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemAyuda;
+    private javax.swing.JMenuItem jMenuItemGenerarInformes;
     private javax.swing.JPanel jPanel1;
     private timersavedata.TimerData timerData;
     // End of variables declaration//GEN-END:variables
